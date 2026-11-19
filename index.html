@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfólio pessoal de João Pedro De Padua — Análise e Desenvolvimento de Sistemas (AMS-Fatec Antonio Brambilla)" />
+  <title>João Pedro De Padua — Portfólio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Cursor customizado -->
+  <div class="custom-cursor" id="customCursor" aria-hidden="true"></div>
+
+  <!-- Preview flutuante que segue o mouse ao passar sobre os projetos/mentorias -->
+  <div class="project-floating-preview" id="projectPreview" aria-hidden="true">
+    <img id="projectPreviewImg" src="" alt="" />
+  </div>
+
+  <!-- =========================================================
+       1. HEADER FIXO
+  ========================================================= -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a href="#hero" class="logo" data-cursor="hover">JP.</a>
+
+      <nav class="main-nav" aria-label="Navegação principal">
+        <a href="#sobre" class="nav-link" data-cursor="hover">Sobre</a>
+        <a href="#projetos" class="nav-link" data-cursor="hover">Mentorias &amp; Visitas</a>
+        <a href="#certificados" class="nav-link" data-cursor="hover">Certificados</a>
+      </nav>
+
+      <a href="#contato" class="btn-pill btn-pill--sm" data-cursor="hover">
+        <span>Contato</span>
+      </a>
+    </div>
+  </header>
+
+  <main id="topo">
+
+    <!-- =========================================================
+         2. HERO (// 001) COM A SUA FOTO RECORTADA
+    ========================================================= -->
+    <section id="hero" class="section hero-section">
+      <canvas id="heroCanvas" class="hero-canvas" aria-hidden="true"></canvas>
+
+      <div class="container hero-content">
+        <div class="hero-top-meta reveal">
+          <span class="mono-label">// 001</span>
+          <span class="mono-label status-badge">
+            <span class="status-dot"></span> AMS-FATEC ANTONIO BRAMBILLA &bull; 1&ordm; ANO
+          </span>
+        </div>
+
+        <div class="hero-main-grid">
+          <div class="hero-text-col">
+            <h1 class="hero-title reveal">JOÃO PEDRO<br />DE PADUA</h1>
+
+            <div class="hero-professions reveal">
+              <p class="mono-label">/ Análise e Desenvolvimento de Sistemas</p>
+              <p class="mono-label">/ Front-end &amp; Prototipação UI</p>
+            </div>
+
+            <p class="hero-tagline reveal">
+              Estudante integrado no programa AMS-Fatec, construindo soluções digitais através de engenharia de requisitos, prototipação no Figma e vivências reais com empresas de tecnologia.
+            </p>
+
+            <div class="hero-cta-row reveal">
+              <a href="#projetos" class="btn-pill" data-cursor="hover">
+                <span>Ver Mentorias &amp; Projetos &darr;</span>
+              </a>
+              <a href="#certificados" class="mono-label scroll-cue" data-cursor="hover">
+                Certificações &rarr;
+              </a>
+            </div>
+          </div>
+
+          <!-- Sua foto integrada no Hero -->
+          <div class="hero-photo-col reveal">
+            <div class="hero-portrait-card" data-cursor="hover">
+              <img
+                id="heroPortraitImg"
+                src="foto-perfil.jpg"
+                alt="Retrato de João Pedro De Padua"
+                class="is-grayscale"
+              />
+              <div class="portrait-toolbar">
+                <button type="button" class="portrait-tool-btn" id="toggleBwBtn">P&amp;B / Cor</button>
+                <label class="portrait-tool-btn">
+                  Trocar Foto
+                  <input type="file" accept="image/*" hidden id="uploadHeroPhoto" />
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         3. SOBRE (// 002)
+    ========================================================= -->
+    <section id="sobre" class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="mono-label">// 002</span>
+          <h2 class="section-title">Sobre Mim &amp; Trajetória</h2>
+        </div>
+
+        <div class="about-intro reveal">
+          <p class="about-statement">
+            Sou <strong>João Pedro De Padua</strong>, aluno integrado no programa <strong>AMS-Fatec Antonio Brambilla</strong>, cursando o 1&ordm; ano de Análise e Desenvolvimento de Sistemas. Minha formação combina teoria académica com ciclos práticos de mentoria junto a empresas parceiras como DevCoffee, Tebe, Fundação Iochpe e IBM.
+          </p>
+        </div>
+
+        <!-- Linha do tempo de experiência académica e mentorias -->
+        <div class="timeline" aria-label="Linha do tempo de formação e mentorias">
+          <article class="timeline-item reveal">
+            <span class="mono-label timeline-period">2025 &mdash; ATUAL</span>
+            <div class="timeline-role">
+              <h3>AMS-Fatec Antonio Brambilla</h3>
+              <p class="role-title">Análise e Desenvolvimento de Sistemas (1&ordm; Ano)</p>
+            </div>
+            <p class="timeline-desc">
+              Desenvolvimento de sistemas web, levantamento de requisitos, trabalho em equipas multidisciplinares (ADM + ADS) e práticas ágeis.
+            </p>
+          </article>
+
+          <article class="timeline-item reveal">
+            <span class="mono-label timeline-period">SET &mdash; OUT 2025</span>
+            <div class="timeline-role">
+              <h3>Tebe &mdash; Ciclo de Mentorias</h3>
+              <p class="role-title">GitHub, Sensores IoT &amp; Entrega de Solução</p>
+            </div>
+            <p class="timeline-desc">
+              Quatro mentorias técnicas acompanhadas por Matheus Nard, Marco (CEO) e Marcos, incluindo versionamento com GitHub e entrega de projeto avaliado pela empresa.
+            </p>
+          </article>
+
+          <article class="timeline-item reveal">
+            <span class="mono-label timeline-period">ABR 2024 &mdash; JUN 2025</span>
+            <div class="timeline-role">
+              <h3>DevCoffee &mdash; Parceria Centro Paula Souza</h3>
+              <p class="role-title">10 Mentorias de Software House, Requisitos &amp; Figma</p>
+            </div>
+            <p class="timeline-desc">
+              Imersão completa no fluxo de uma software house fundada por Bruno Luis Ferreira e Murilo H. Torquato, passando por simulação cliente-fornecedor e prototipação no Figma.
+            </p>
+          </article>
+
+          <article class="timeline-item reveal">
+            <span class="mono-label timeline-period">SET &mdash; NOV 2024</span>
+            <div class="timeline-role">
+              <h3>Fundação Iochpe &amp; Visita Técnica IBM</h3>
+              <p class="role-title">Imersão Corporativa &amp; Inteligência Artificial</p>
+            </div>
+            <p class="timeline-desc">
+              Encontro com a Fundação Iochpe que viabilizou a viagem técnica à IBM (Hortolândia), com palestras sobre IA, cultura organizacional e carreiras em tecnologia.
+            </p>
+          </article>
+        </div>
+
+        <div class="about-actions reveal">
+          <a href="#certificados" class="btn-pill" data-cursor="hover">
+            <span>Ver Certificados &darr;</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         4. PROJETOS / VIVÊNCIAS E MENTORIAS (// 003)
+    ========================================================= -->
+    <section id="projetos" class="section">
+      <div class="container">
+        <div class="section-header-flex reveal">
+          <div class="section-header" style="margin-bottom: 0;">
+            <span class="mono-label">// 003</span>
+            <h2 class="section-title">Vivências, Mentorias &amp; Visitas</h2>
+          </div>
+
+          <div class="filter-pills" id="filterPills">
+            <button type="button" class="filter-btn active" data-filter="todos" data-cursor="hover">Todos</button>
+            <button type="button" class="filter-btn" data-filter="devcoffee" data-cursor="hover">DevCoffee</button>
+            <button type="button" class="filter-btn" data-filter="tebe" data-cursor="hover">Tebe</button>
+            <button type="button" class="filter-btn" data-filter="ibm" data-cursor="hover">IBM &amp; Iochpe</button>
+          </div>
+        </div>
+
+        <p class="mono-label list-hint reveal">
+          Clique em qualquer encontro para abrir o relato completo, galeria e anexar suas fotos.
+        </p>
+
+        <div class="projects-list" id="projectsList" role="list"></div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         5. SERVIÇOS / ÁREAS DE ATUAÇÃO (// 004)
+    ========================================================= -->
+    <section id="servicos" class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="mono-label">// 004</span>
+          <h2 class="section-title">Competências &amp; Foco</h2>
+        </div>
+
+        <div class="services-grid">
+          <article class="service-card reveal" data-cursor="hover">
+            <div class="service-top">
+              <span class="mono-label service-num">01</span>
+              <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <polyline points="16 18 22 12 16 6" />
+                <polyline points="8 6 2 12 8 18" />
+              </svg>
+            </div>
+            <h3>Desenvolvimento Front-end</h3>
+            <p>Criação de interfaces web modernas, responsivas e semânticas com HTML5, CSS3, JavaScript e fundamentos de React.js.</p>
+          </article>
+
+          <article class="service-card reveal" data-cursor="hover">
+            <div class="service-top">
+              <span class="mono-label service-num">02</span>
+              <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <rect x="3" y="4" width="18" height="16" rx="2" />
+                <path d="M3 9h18M9 20V9" />
+              </svg>
+            </div>
+            <h3>Prototipação no Figma</h3>
+            <p>Estruturação de telas, organização de fluxos de navegação e design de experiência do utilizador aplicados em projetos práticos.</p>
+          </article>
+
+          <article class="service-card reveal" data-cursor="hover">
+            <div class="service-top">
+              <span class="mono-label service-num">03</span>
+              <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                <polyline points="14 2 14 8 20 8" />
+                <line x1="16" y1="13" x2="8" y2="13" />
+                <line x1="16" y1="17" x2="8" y2="17" />
+              </svg>
+            </div>
+            <h3>Engenharia de Requisitos</h3>
+            <p>Entrevistas com clientes, levantamento de regras de negócio, elaboração e refinamento de documentos de requisitos.</p>
+          </article>
+
+          <article class="service-card reveal" data-cursor="hover">
+            <div class="service-top">
+              <span class="mono-label service-num">04</span>
+              <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <circle cx="18" cy="18" r="3" />
+                <circle cx="6" cy="6" r="3" />
+                <path d="M13 6h3a2 2 0 0 1 2 2v7" />
+                <line x1="6" y1="9" x2="6" y2="21" />
+              </svg>
+            </div>
+            <h3>Versionamento &amp; GitHub</h3>
+            <p>Gestão de repositórios locais e remotos, controle de versões e trabalho colaborativo em equipas de desenvolvimento.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         6. CERTIFICADOS (// 005)
+    ========================================================= -->
+    <section id="certificados" class="section">
+      <div class="container">
+        <div class="section-header-flex reveal">
+          <div class="section-header" style="margin-bottom: 0;">
+            <span class="mono-label">// 005</span>
+            <h2 class="section-title">Certificados &amp; Destaques</h2>
+          </div>
+
+          <button type="button" class="btn-pill btn-pill--sm" id="openAddCertBtn" data-cursor="hover">
+            <span>+ Adicionar Certificado</span>
+          </button>
+        </div>
+
+        <!-- Formulário para cadastrar novos certificados -->
+        <form id="addCertForm" class="add-cert-form" hidden>
+          <div class="form-row">
+            <div class="form-field">
+              <label class="mono-label" for="newCertTitle">Nome do Curso / Trilha *</label>
+              <input type="text" id="newCertTitle" placeholder="Ex: JavaScript Moderno" required />
+            </div>
+            <div class="form-field">
+              <label class="mono-label" for="newCertOrg">Instituição Executora *</label>
+              <input type="text" id="newCertOrg" placeholder="Ex: Venturus / Softex" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-field">
+              <label class="mono-label" for="newCertHours">Carga Horária *</label>
+              <input type="text" id="newCertHours" placeholder="Ex: 30 horas" required />
+            </div>
+            <div class="form-field">
+              <label class="mono-label" for="newCertDate">Local e Data *</label>
+              <input type="text" id="newCertDate" placeholder="Ex: Campinas, 27 de março de 2025" required />
+            </div>
+          </div>
+          <div class="form-field">
+            <label class="mono-label" for="newCertDesc">Descrição / Programa</label>
+            <textarea id="newCertDesc" rows="2" placeholder="Detalhes adicionais do certificado..."></textarea>
+          </div>
+          <div class="form-footer">
+            <button type="submit" class="btn-pill btn-pill--sm" data-cursor="hover">
+              <span>Guardar Certificado</span>
+            </button>
+            <button type="button" class="mono-label cancel-link" id="cancelAddCertBtn">Cancelar</button>
+          </div>
+        </form>
+
+        <!-- Carrossel / Lista de Certificados -->
+        <div class="testimonial-wrapper reveal" aria-live="polite">
+          <div class="cert-display-grid" id="certCard">
+            <div>
+              <span class="mono-label cert-tag" id="certProgram">TIC EM TRILHAS &bull; PROGRAMA MCTI FUTURO</span>
+              <h3 class="cert-main-title" id="certTitle">Introdução a React.js</h3>
+              <p class="cert-org" id="certOrg">Instituição Executora: Venturus &bull; Coordenação: Softex</p>
+              <p class="cert-desc" id="certDesc">
+                Certificamos que João Pedro De Padua concluiu sua participação na trilha Introdução a React.js com carga horária de 30 horas oferecida pela instituição executora Venturus, no âmbito do Programa MCTI Futuro (Ministério da Ciência, Tecnologia e Inovação).
+              </p>
+              <p class="mono-label cert-meta-footer" id="certMeta">
+                Carga Horária: 30 horas &bull; Campinas, 27 de março de 2025
+              </p>
+            </div>
+
+            <!-- Espaço para anexar a imagem do certificado -->
+            <label class="cert-upload-slot" title="Clique para anexar a imagem do certificado" data-cursor="hover">
+              <input type="file" accept="image/*" hidden id="certImageInput" />
+              <img id="certPreviewImg" src="" alt="Imagem do certificado" hidden />
+              <span class="mono-label">+ Anexar Imagem do Certificado</span>
+              <span class="upload-sub">Clique para carregar foto ou print do documento</span>
+            </label>
+          </div>
+
+          <div class="testimonial-controls">
+            <button type="button" class="icon-btn" id="prevCert" aria-label="Certificado anterior" data-cursor="hover">
+              &larr;
+            </button>
+            <span class="mono-label" id="certCounter">01 / 01</span>
+            <button type="button" class="icon-btn" id="nextCert" aria-label="Próximo certificado" data-cursor="hover">
+              &rarr;
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         7. FERRAMENTAS (// 006)
+    ========================================================= -->
+    <section id="ferramentas" class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="mono-label">// 006</span>
+          <h2 class="section-title">Ferramentas &amp; Tecnologias</h2>
+        </div>
+
+        <div class="tools-grid">
+          <div class="tool-card reveal" data-cursor="hover">
+            <span class="mono-label tool-index">/ 01</span>
+            <div class="tool-info">
+              <h3>React.js</h3>
+              <span class="mono-label tool-level">30h Certificadas</span>
+            </div>
+          </div>
+
+          <div class="tool-card reveal" data-cursor="hover">
+            <span class="mono-label tool-index">/ 02</span>
+            <div class="tool-info">
+              <h3>HTML5 &amp; CSS3</h3>
+              <span class="mono-label tool-level">Avançado</span>
+            </div>
+          </div>
+
+          <div class="tool-card reveal" data-cursor="hover">
+            <span class="mono-label tool-index">/ 03</span>
+            <div class="tool-info">
+              <h3>JavaScript (ES6+)</h3>
+              <span class="mono-label tool-level">Intermediário</span>
+            </div>
+          </div>
+
+          <div class="tool-card reveal" data-cursor="hover">
+            <span class="mono-label tool-index">/ 04</span>
+            <div class="tool-info">
+              <h3>Figma (UI Design)</h3>
+              <span class="mono-label tool-level">Prática em Mentoria</span>
+            </div>
+          </div>
+
+          <div class="tool-card reveal" data-cursor="hover">
+            <span class="mono-label tool-index">/ 05</span>
+            <div class="tool-info">
+              <h3>Git &amp; GitHub</h3>
+              <span class="mono-label tool-level">Versionamento</span>
+            </div>
+          </div>
+
+          <div class="tool-card reveal" data-cursor="hover">
+            <span class="mono-label tool-index">/ 06</span>
+            <div class="tool-info">
+              <h3>Engenharia de Requisitos</h3>
+              <span class="mono-label tool-level">Documentação</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         8. CONTATO (// 007)
+    ========================================================= -->
+    <section id="contato" class="section contact-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="mono-label">// 007</span>
+          <h2 class="contact-giant-title">Vamos criar juntos</h2>
+        </div>
+
+        <form id="contactForm" class="contact-form reveal" novalidate>
+          <fieldset class="service-checkboxes">
+            <legend class="mono-label">Assunto ou oportunidade:</legend>
+            <div class="checkbox-group">
+              <label class="checkbox-pill" data-cursor="hover">
+                <input type="checkbox" name="servico" value="Estágio em TI" />
+                <span>Estágio em TI</span>
+              </label>
+              <label class="checkbox-pill" data-cursor="hover">
+                <input type="checkbox" name="servico" value="Desenvolvimento Web" />
+                <span>Desenvolvimento Web</span>
+              </label>
+              <label class="checkbox-pill" data-cursor="hover">
+                <input type="checkbox" name="servico" value="UI / Figma" />
+                <span>UI / Figma</span>
+              </label>
+              <label class="checkbox-pill" data-cursor="hover">
+                <input type="checkbox" name="servico" value="Projetos Académicos" />
+                <span>Projetos Académicos</span>
+              </label>
+            </div>
+          </fieldset>
+
+          <div class="form-row">
+            <div class="form-field">
+              <label for="nome" class="mono-label">Seu Nome *</label>
+              <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required />
+              <span class="field-error" id="erroNome" aria-live="polite"></span>
+            </div>
+
+            <div class="form-field">
+              <label for="email" class="mono-label">Seu E-mail *</label>
+              <input type="email" id="email" name="email" placeholder="seu@email.com" required />
+              <span class="field-error" id="erroEmail" aria-live="polite"></span>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label for="mensagem" class="mono-label">Mensagem *</label>
+            <textarea id="mensagem" name="mensagem" rows="4" placeholder="Escreva sua mensagem ou proposta..." required></textarea>
+            <span class="field-error" id="erroMensagem" aria-live="polite"></span>
+          </div>
+
+          <div class="form-footer">
+            <button type="submit" class="btn-pill" data-cursor="hover">
+              <span>Enviar mensagem &rarr;</span>
+            </button>
+            <p class="form-feedback" id="formFeedback" role="status" aria-live="polite"></p>
+          </div>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =========================================================
+       9. RODAPÉ
+  ========================================================= -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-email-block">
+          <span class="mono-label">E-mail de contato</span>
+          <div class="email-copy-row">
+            <span class="footer-email" id="myEmail">joaopedro.padua@fatec.sp.gov.br</span>
+            <button type="button" class="btn-pill btn-pill--sm" id="copyEmailBtn" data-cursor="hover">
+              <span id="copyEmailText">Copiar</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="footer-columns">
+          <div class="footer-col">
+            <span class="mono-label">Navegação</span>
+            <a href="#sobre" data-cursor="hover">Sobre</a>
+            <a href="#projetos" data-cursor="hover">Mentorias &amp; Visitas</a>
+            <a href="#certificados" data-cursor="hover">Certificados</a>
+            <a href="#contato" data-cursor="hover">Contato</a>
+          </div>
+
+          <div class="footer-col">
+            <span class="mono-label">Redes &amp; Código</span>
+            <a href="[LINK-GITHUB]" target="_blank" rel="noopener noreferrer" data-cursor="hover">GitHub &nearr;</a>
+            <a href="[LINK-LINKEDIN]" target="_blank" rel="noopener noreferrer" data-cursor="hover">LinkedIn &nearr;</a>
+            <a href="[LINK-INSTAGRAM]" target="_blank" rel="noopener noreferrer" data-cursor="hover">Instagram &nearr;</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="mono-label">&copy; 2026 João Pedro De Padua &mdash; AMS-Fatec Antonio Brambilla.</p>
+        <a href="#topo" class="mono-label back-to-top" data-cursor="hover">Voltar ao topo &uarr;</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =========================================================
+       MODAL DE DETALHES (CASE STUDY / MENTORIA)
+  ========================================================= -->
+  <div class="modal-backdrop" id="projectModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
+    <div class="modal-container">
+      <div class="modal-header">
+        <div class="modal-meta">
+          <span class="mono-label" id="modalCategory"></span>
+          <span class="mono-label">&bull;</span>
+          <span class="mono-label" id="modalYear"></span>
+        </div>
+        <button type="button" class="icon-btn" id="closeModalBtn" aria-label="Fechar detalhes" data-cursor="hover">
+          &times;
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <h2 class="modal-title" id="modalTitle"></h2>
+
+        <!-- Moldura interativa para você anexar a foto real deste encontro -->
+        <label class="modal-cover modal-photo-uploader" title="Clique para anexar a foto deste encontro" data-cursor="hover">
+          <input type="file" accept="image/*" hidden id="modalPhotoInput" />
+          <img id="modalCoverImg" src="" alt="" />
+          <span class="modal-upload-badge mono-label">+ Clique na imagem para anexar sua foto real</span>
+        </label>
+
+        <div class="modal-details-grid">
+          <div>
+            <span class="mono-label">Relato do Encontro</span>
+            <p class="modal-description" id="modalDescription"></p>
+          </div>
+
+          <div>
+            <span class="mono-label">Destaques &amp; Participantes</span>
+            <ul class="modal-deliverables" id="modalDeliverables"></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
