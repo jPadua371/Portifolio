@@ -1,664 +1,1145 @@
 /* =========================================================
-   1. DADOS DAS SUAS VIVÊNCIAS, MENTORIAS E CERTIFICADOS
+   DICA DE PERFORMANCE — CONVERSÃO DAS IMAGENS PARA WEBP:
+   As imagens atuais (~15 MB no total) podem ser convertidas para WebP
+   reduzindo em até 75% o peso sem perda visível de qualidade:
+   - Linux / macOS (Bash):
+     for f in *.png; do cwebp -q 82 "$f" -o "${f%.png}.webp"; done
+   - Windows (PowerShell com libwebp instalado):
+     Get-ChildItem *.png | ForEach-Object { cwebp -q 82 $_.Name -o ($_.BaseName + ".webp") }
+   Após gerar foto-perfil.webp, descomente a tag <source> no index.html.
+========================================================= */
+
+/* =========================================================
+   1. DADOS DAS 20 VIVÊNCIAS & MENTORIAS
 ========================================================= */
 const experiencesData = [
   {
-    id: "devcoffee-sobre",
     filter: "devcoffee",
+    companyLabel: "DevCoffee",
+    yearGroup: "2024",
     title: "Sobre a DevCoffee & Fundadores",
     category: "DevCoffee • Empresa Parceira",
     year: "Desde 2006",
-    cover: "https://picsum.photos/seed/devcoffee-hq/1000/620",
+    cover: "visita.png",
+    coverAlt: "Apresentação institucional da DevCoffee e seus fundadores",
     description:
-      "Sediada em Leme (SP), às margens da Rodovia Anhanguera, a DevCoffee atua desde 2006 no desenvolvimento de sistemas voltados à gestão empresarial, com destaque para a plataforma integrada online BrERP. Fundada por Bruno Luis Ferreira e Murilo Habermann Torquato, a empresa firmou parceria com o Centro Paula Souza (CPS) e a Fatec para aproximar os estudantes da prática profissional.",
-    highlights: [
+      "Sediada em Leme (SP), às margens da Rodovia Anhanguera, a DevCoffee atua desde 2006 no desenvolvimento de sistemas de gestão empresarial, destacando-se pela plataforma online BrERP. Fundada por Bruno Luis Ferreira e Murilo Habermann Torquato, firmou parceria com o Centro Paula Souza (CPS) e a Fatec para aproximar os estudantes do mercado de tecnologia.",
+    bullets: [
       "Fundadores: Bruno Luis Ferreira e Murilo Habermann Torquato",
-      "Principal produto: BrERP (Gestão Empresarial Integrada)",
-      "Parceria educacional com Centro Paula Souza / Fatec"
+      "Produto principal: BrERP (Gestão Empresarial Integrada)",
+      "Parceria educacional com o Centro Paula Souza (CPS)"
     ]
   },
   {
-    id: "devcoffee-2024-01",
     filter: "devcoffee",
+    companyLabel: "DevCoffee",
+    yearGroup: "2024",
     title: "1ª Mentoria DevCoffee — Apresentação & Contexto",
     category: "DevCoffee • Mentoria 01",
     year: "25/04/2024",
-    cover: "https://picsum.photos/seed/mentoria1/1000/620",
+    cover: "visita2.png",
+    coverAlt: "Turma reunida na sala de aula durante a primeira mentoria da DevCoffee",
     description:
-      "Encontro inicial com Matheus Montoan e Matheus Marcelino, representantes da DevCoffee. Conhecemos a trajetória da empresa, seus principais serviços, objetivos estratégicos e o contexto em que o projeto académico seria desenvolvido.",
-    highlights: [
+      "Encontro inicial com Matheus Montoan e Matheus Marcelino, representantes da DevCoffee. Conhecemos a história da empresa, seus principais serviços, planos futuros e o contexto profissional em que o nosso projeto seria desenvolvido.",
+    bullets: [
       "Mentores: Matheus Montoan e Matheus Marcelino",
-      "Visão geral da atuação no mercado de tecnologia",
-      "Alinhamento inicial da parceria com a turma"
+      "Apresentação da trajetória e atuação da DevCoffee",
+      "Contextualização do projeto da turma"
     ]
   },
   {
-    id: "devcoffee-2024-02",
     filter: "devcoffee",
+    companyLabel: "DevCoffee",
+    yearGroup: "2024",
     title: "2ª Mentoria DevCoffee — Cargos de uma Software House",
     category: "DevCoffee • Mentoria 02",
     year: "06/09/2024",
-    cover: "https://picsum.photos/seed/mentoria2/1000/620",
+    cover: "visita3.png",
+    coverAlt: "Mentores da DevCoffee explicando os cargos de uma software house aos alunos",
     description:
-      "Nesta mentoria com Matheus Marcelino e José Leite, exploramos as diferentes funções e responsabilidades dentro de uma software house, entendendo a importância de cada papel na construção de produtos digitais.",
-    highlights: [
+      "Com a presença de Matheus Marcelino e José Leite, conhecemos os diferentes cargos e funções de uma software house, compreendendo as responsabilidades de cada profissional e sua importância na equipe.",
+    bullets: [
       "Mentores: Matheus Marcelino e José Leite",
-      "Estrutura de equipas de desenvolvimento de software",
+      "Papéis e funções dentro de uma software house",
       "Sessão de perguntas sobre carreira em TI"
     ]
   },
   {
-    id: "iochpe-2024",
-    filter: "ibm",
-    title: "Encontro Fundação Iochpe — Programa AMS",
-    category: "Fundação Iochpe • Visita",
+    filter: "iochpe",
+    companyLabel: "Fundação Iochpe",
+    yearGroup: "2024",
+    title: "1ª Mentoria Fundação Iochpe — Escolha do Curso AMS & Apoio",
+    category: "Fundação Iochpe • Mentoria 01",
     year: "06/09/2024",
-    cover: "https://picsum.photos/seed/iochpe/1000/620",
+    cover: "visita4.png",
+    coverAlt: "Roda de conversa da turma AMS com representantes da Fundação Iochpe",
     description:
-      "Bate-papo com a Fundação Iochpe sobre os motivos que levaram cada aluno a escolher o curso AMS e nossas expectativas de formação. Também recebemos a notícia da doação que viabilizou a viagem técnica da turma.",
-    highlights: [
-      "Incentivo à educação técnica e formação profissional",
-      "Compartilhamento de metas dos alunos AMS",
-      "Anúncio do apoio para a viagem técnica"
+      "Bate-papo com os alunos sobre os motivos que levaram cada um a escolher o curso AMS e suas expectativas em relação à formação. Também conhecemos a história e ações da Fundação Iochpe e recebemos a notícia da doação que proporcionou a viagem técnica da turma.",
+    bullets: [
+      "Roda de conversa sobre expectativas no curso AMS",
+      "História e objetivos da Fundação Iochpe",
+      "Doação que viabilizou a viagem técnica da turma"
     ]
   },
   {
-    id: "devcoffee-2024-03",
     filter: "devcoffee",
-    title: "3ª Mentoria DevCoffee — Formação das Equipas",
+    companyLabel: "DevCoffee",
+    yearGroup: "2024",
+    title: "3ª Mentoria DevCoffee — Formação das Equipes",
     category: "DevCoffee • Mentoria 03",
     year: "11/09/2024",
-    cover: "https://picsum.photos/seed/mentoria3/1000/620",
+    cover: "visita5.png",
+    coverAlt: "Estudantes organizados em equipes multidisciplinares na mentoria da DevCoffee",
     description:
-      "Organização dos grupos de 4 integrantes, unindo 2 alunos de Administração e 2 de Análise e Desenvolvimento de Sistemas (ADS), para iniciar o brainstorming e o planeamento colaborativo do projeto.",
-    highlights: [
-      "Equipas híbridas: 2 alunos ADM + 2 alunos ADS",
-      "Ideação e definição de propostas de projeto",
-      "Início do planeamento ao longo do ensino técnico e superior"
+      "Organização dos grupos de quatro integrantes, unindo dois alunos de Administração e dois de Desenvolvimento de Sistemas, para iniciar o brainstorming e o planejamento colaborativo do projeto ao longo do curso.",
+    bullets: [
+      "Equipes multidisciplinares: 2 alunos ADM + 2 alunos ADS",
+      "Compartilhamento de ideias e propostas iniciais",
+      "Foco em criatividade e colaboração em grupo"
     ]
   },
   {
-    id: "devcoffee-2024-04",
     filter: "devcoffee",
+    companyLabel: "DevCoffee",
+    yearGroup: "2024",
     title: "4ª Mentoria DevCoffee — Dinâmica Cliente & Fornecedor",
     category: "DevCoffee • Mentoria 04",
     year: "24/09/2024",
-    cover: "https://picsum.photos/seed/mentoria4/1000/620",
+    cover: "visita6.png",
+    coverAlt: "Equipes realizando dinâmica prática de cliente e fornecedor em sala",
     description:
-      "Retomada dos grupos para troca de ideias com as equipas parceiras. Cada grupo assumiu o papel de cliente do outro, apresentando necessidades e expectativas reais para orientar o desenvolvimento.",
-    highlights: [
-      "Simulação prática de relacionamento cliente-equipa",
-      "Mapeamento inicial de expectativas do produto",
-      "Estruturação das primeiras propostas"
+      "Retomada dos grupos formados na mentoria anterior para troca de ideias com as equipes parceiras. Cada grupo atuou como cliente do outro, apresentando necessidades e expectativas para orientar o planejamento.",
+    bullets: [
+      "Simulação prática cliente-fornecedor entre equipes",
+      "Levantamento inicial de expectativas do cliente",
+      "Estruturação das propostas de projeto"
     ]
   },
   {
-    id: "devcoffee-2024-05",
     filter: "devcoffee",
+    companyLabel: "DevCoffee",
+    yearGroup: "2024",
     title: "5ª Mentoria DevCoffee — Especificação de Requisitos",
     category: "DevCoffee • Mentoria 05",
     year: "07/10/2024",
-    cover: "https://picsum.photos/seed/mentoria5/1000/620",
+    cover: "visita7.png",
+    coverAlt: "Desenvolvedor orientando alunos na especificação de requisitos de software",
     description:
-      "Com orientação do desenvolvedor José, elaboramos perguntas estratégicas sobre especificação de requisitos e realizamos entrevistas cruzadas entre os grupos parceiros para alinhar o escopo.",
-    highlights: [
-      "Orientação técnica com o desenvolvedor José",
-      "Elaboração de questionário de levantamento de requisitos",
-      "Alinhamento de escopo entre equipas"
+      "Sob orientação do desenvolvedor José, elaboramos perguntas sobre especificação de requisitos e as encaminhamos ao grupo parceiro, além de recebermos perguntas da outra equipe para responder na aula seguinte.",
+    bullets: [
+      "Orientação técnica do desenvolvedor José",
+      "Elaboração de perguntas de especificação de requisitos",
+      "Alinhamento mútuo entre equipes parceiras"
     ]
   },
   {
-    id: "devcoffee-2024-06",
     filter: "devcoffee",
+    companyLabel: "DevCoffee",
+    yearGroup: "2024",
     title: "6ª Mentoria DevCoffee — Acompanhamento & Evolução",
     category: "DevCoffee • Mentoria 06",
     year: "22/10/2024",
-    cover: "https://picsum.photos/seed/mentoria6/1000/620",
+    cover: "visita8.png",
+    coverAlt: "Acompanhamento do progresso dos grupos durante mentoria da DevCoffee",
     description:
-      "Reunião de acompanhamento com a DevCoffee para dar sequência às tarefas pendentes, aplicar as orientações recebidas anteriormente e organizar as próximas entregas do projeto.",
-    highlights: [
-      "Revisão de tarefas e progresso em grupo",
-      "Aplicação prática das diretrizes de engenharia",
-      "Organização do cronograma de desenvolvimento"
+      "Reunião com a DevCoffee para dar sequência ao trabalho em grupo, retomar atividades pendentes e organizar as próximas etapas colocando em prática as orientações já recebidas.",
+    bullets: [
+      "Continuidade e revisão de pendências do projeto",
+      "Planejamento das etapas seguintes de execução",
+      "Acompanhamento direto com a empresa parceira"
     ]
   },
   {
-    id: "devcoffee-2024-07",
     filter: "devcoffee",
+    companyLabel: "DevCoffee",
+    yearGroup: "2024",
     title: "7ª Mentoria DevCoffee — Documento de Requisitos",
     category: "DevCoffee • Mentoria 07",
     year: "07/11/2024",
-    cover: "https://picsum.photos/seed/mentoria7/1000/620",
+    cover: "visita9.png",
+    coverAlt: "Alunos redigindo o Documento de Requisitos com apoio dos mentores",
     description:
-      "Aprofundamento nas necessidades do cliente e início da redação formal do Documento de Requisitos, registando funcionalidades, regras e características essenciais do sistema.",
-    highlights: [
-      "Início da formalização do Documento de Requisitos",
-      "Definição de funcionalidades prioritárias",
-      "Validação junto ao grupo cliente"
+      "Aprofundamento nas necessidades e expectativas do cliente e início da elaboração formal do Documento de Requisitos, registrando funcionalidades e características essenciais do produto.",
+    bullets: [
+      "Início da redação do Documento de Requisitos",
+      "Registro de funcionalidades e características do sistema",
+      "Alinhamento com as demandas do cliente"
     ]
   },
   {
-    id: "ibm-visita-2024",
     filter: "ibm",
-    title: "Visita Técnica à IBM — Cultura, IA & Carreiras",
-    category: "IBM Brasil • Imersão Corporativa",
+    companyLabel: "IBM",
+    yearGroup: "2024",
+    title: "Visita Técnica IBM (Parte 1) — Cultura & Bem-Estar",
+    category: "IBM Brasil • Visita Técnica",
     year: "22/11/2024",
-    cover: "https://picsum.photos/seed/ibm-visit/1000/620",
+    cover: "visita10.png",
+    coverAlt: "Turma visitando as áreas de convivência e bem-estar na unidade da IBM",
     description:
-      "Visita técnica à IBM (Hortolândia) acompanhados por Bruna, conhecendo a estrutura e cultura de bem-estar da empresa. Participamos de palestra com Igor sobre benefícios e ética na Inteligência Artificial, além de bate-papo sobre oportunidades profissionais e benefícios.",
-    highlights: [
-      "Tour guiado com Bruna pela estrutura da IBM",
-      "Palestra com Igor sobre impactos e responsabilidades da IA",
-      "Painel de carreiras, benefícios e encerramento em Hortolândia"
+      "Acompanhados por Bruna, conhecemos os ambientes da IBM e sua cultura organizacional voltada ao bem-estar dos colaboradores, incluindo áreas de massagem, refeitórios, pebolim e o boneco de boxe Boby.",
+    bullets: [
+      "Recepção e tour guiado por Bruna",
+      "Cultura de valorização e bem-estar no trabalho",
+      "Infraestrutura de uma empresa global de tecnologia"
     ]
   },
   {
-    id: "devcoffee-2024-08",
+    filter: "ibm",
+    companyLabel: "IBM",
+    yearGroup: "2024",
+    title: "Visita Técnica IBM (Parte 2) — Palestra sobre Inteligência Artificial",
+    category: "IBM Brasil • Palestra IA",
+    year: "22/11/2024",
+    cover: "visita11.png",
+    coverAlt: "Palestra técnica sobre Inteligência Artificial no auditório da IBM",
+    description:
+      "Segunda palestra conduzida por Igor, discutindo os benefícios, aplicações práticas e riscos do uso da Inteligência Artificial, gerando reflexão sobre responsabilidade e ética na tecnologia.",
+    bullets: [
+      "Apresentação conduzida por Igor",
+      "Benefícios e riscos do uso da Inteligência Artificial",
+      "Reflexão sobre ética e impacto social da IA"
+    ]
+  },
+  {
+    filter: "ibm",
+    companyLabel: "IBM",
+    yearGroup: "2024",
+    title: "Visita Técnica IBM (Parte 3) — Carreiras & Encerramento",
+    category: "IBM Brasil • Carreiras",
+    year: "22/11/2024",
+    cover: "visita12.png",
+    coverAlt: "Foto oficial da turma no encerramento da visita técnica à IBM",
+    description:
+      "Bate-papo final sobre oportunidades profissionais, programas de entrada e benefícios corporativos oferecidos pela IBM, encerrando a viagem técnica com parada em Hortolândia.",
+    bullets: [
+      "Oportunidades de carreira e benefícios na IBM",
+      "Foto oficial da turma e encerramento da visita",
+      "Imersão completa no mercado de tecnologia"
+    ]
+  },
+  {
     filter: "devcoffee",
+    companyLabel: "DevCoffee",
+    yearGroup: "2024",
     title: "8ª Mentoria DevCoffee — Reformulação de Requisitos",
     category: "DevCoffee • Mentoria 08",
     year: "25/11/2024",
-    cover: "https://picsum.photos/seed/mentoria8/1000/620",
+    cover: "visita13.png",
+    coverAlt: "Revisão e reformulação do Documento de Requisitos em sala de aula",
     description:
-      "Discussão das observações apontadas pelo cliente e reformulação do documento de requisitos, garantindo que todas as especificações estivessem claras e alinhadas ao definido em reunião.",
-    highlights: [
-      "Revisão crítica e ajustes no Documento de Requisitos",
-      "Validação de clareza técnica e funcional",
-      "Encerramento do ciclo de requisitos de 2024"
+      "Discussão das observações feitas pelo cliente e reformulação do Documento de Requisitos, aplicando ajustes e revisando informações para garantir total clareza e precisão técnica.",
+    bullets: [
+      "Reformulação e ajustes no Documento de Requisitos",
+      "Revisão de clareza conforme feedback do cliente",
+      "Consolidação da etapa de análise"
     ]
   },
   {
-    id: "devcoffee-2025-01",
     filter: "devcoffee",
+    companyLabel: "DevCoffee",
+    yearGroup: "2025",
     title: "1ª Mentoria DevCoffee 2025 — Modelo Software House",
     category: "DevCoffee • Mentoria 2025",
     year: "20/05/2025",
-    cover: "https://picsum.photos/seed/mentoria2025-1/1000/620",
+    cover: "visita14.png",
+    coverAlt: "Encontro de retomada das mentorias DevCoffee em 2025",
     description:
-      "Retomada das mentorias em 2025 com novidades institucionais da empresa e aprofundamento sobre o funcionamento de uma software house e as etapas envolvidas na entrega de soluções para clientes.",
-    highlights: [
-      "Ciclo completo de desenvolvimento sob encomenda",
-      "Contextualização profissional do projeto da turma",
-      "Atualização institucional da empresa parceira"
+      "Retomada das mentorias em 2025 com informações sobre a atualização de marca da empresa e aprofundamento sobre o funcionamento de uma software house e as etapas de entrega de software.",
+    bullets: [
+      "Funcionamento e etapas de uma software house",
+      "Atualização institucional da empresa parceira",
+      "Contextualização profissional do projeto"
     ]
   },
   {
-    id: "devcoffee-2025-02",
     filter: "devcoffee",
+    companyLabel: "DevCoffee",
+    yearGroup: "2025",
     title: "2ª Mentoria DevCoffee 2025 — Prototipação no Figma",
     category: "DevCoffee • UI Design & Figma",
     year: "25/06/2025",
-    cover: "https://picsum.photos/seed/mentoria2025-2/1000/620",
+    cover: "visita15.png",
+    coverAlt: "Oficina prática de prototipação de interfaces no Figma",
     description:
-      "Apresentação prática da ferramenta Figma para criação de protótipos e desenvolvimento visual de sistemas e aplicativos. Colocamos o conteúdo em prática criando o protótipo inicial do nosso projeto.",
-    highlights: [
-      "Aprendizado prático da interface e recursos do Figma",
-      "Construção do protótipo visual do projeto",
-      "Foco na organização de telas e experiência do usuário"
+      "Oficina prática da ferramenta Figma para criação de protótipos e desenvolvimento visual de sistemas e aplicativos, onde começamos a construir o protótipo navegável do nosso projeto.",
+    bullets: [
+      "Aprendizado prático dos recursos do Figma",
+      "Criação do protótipo visual do projeto",
+      "Organização de telas e experiência do usuário"
     ]
   },
   {
-    id: "tebe-2025-01",
+    filter: "iochpe",
+    companyLabel: "Fundação Iochpe",
+    yearGroup: "2025",
+    title: "2ª Mentoria Fundação Iochpe — Resolução de Conflitos & Soft Skills",
+    category: "Fundação Iochpe • Mentoria 02",
+    year: "04/09/2025",
+    cover: "visita16.png",
+    coverAlt: "Dinâmica em grupo sobre resolução de conflitos e habilidades emocionais",
+    description:
+      "Palestra dinâmica sobre resolução de conflitos e habilidades emocionais. Participamos de uma atividade prática dividida em três equipes (iniciar assuntos, manter harmonia e provocar discordâncias), seguida por trios que exercitaram empatia, diálogo e escuta ativa.",
+    bullets: [
+      "Palestra sobre resolução de conflitos e habilidades emocionais",
+      "Dinâmica prática em 3 equipes e trios de comunicação",
+      "Desenvolvimento de empatia, diálogo e gestão de opiniões"
+    ]
+  },
+  {
     filter: "tebe",
+    companyLabel: "Tebe",
+    yearGroup: "2025",
     title: "1ª Mentoria Tebe — Alinhamento & Liderança",
     category: "Tebe • Mentoria 01",
     year: "04/09/2025",
-    cover: "https://picsum.photos/seed/tebe1/1000/620",
+    cover: "visita17.png",
+    coverAlt: "Equipe da Tebe apresentando o desafio do projeto para a turma",
     description:
-      "Visita da empresa Tebe com apresentação dos objetivos, serviços e expectativas em relação ao novo projeto. Conhecemos os profissionais que acompanhariam a turma: Matheus Nard, Marco (CEO) e Marcos.",
-    highlights: [
+      "Visita da empresa Tebe apresentando seus objetivos, serviços e expectativas para o projeto da turma. Conhecemos os profissionais responsáveis pelo acompanhamento: Matheus Nard, Marco (CEO) e Marcos.",
+    bullets: [
       "Participação de Marco (CEO), Matheus Nard e Marcos",
-      "Definição do escopo e expectativas do produto",
-      "Conhecimento dos serviços e atuação da Tebe"
+      "Apresentação dos objetivos e expectativas da Tebe",
+      "Alinhamento inicial do produto a ser desenvolvido"
     ]
   },
   {
-    id: "tebe-2025-02",
     filter: "tebe",
-    title: "2ª Mentoria Tebe — Sensores IoT & GitHub",
+    companyLabel: "Tebe",
+    yearGroup: "2025",
+    title: "2ª Mentoria Tebe — Sensores IoT & Introdução ao GitHub",
     category: "Tebe • Mentoria 02",
     year: "18/09/2025",
-    cover: "https://picsum.photos/seed/tebe2/1000/620",
+    // TODO: Adicionar a foto exclusiva da 2ª mentoria da Tebe
+    cover: "",
+    coverAlt: "Registro da 2ª mentoria da Tebe sobre sensores IoT e GitHub",
     description:
-      "Encontro com instalação prática de sensores para prevenção de falhas em equipamentos (como ar-condicionado) e apresentação sobre GitHub, culminando na criação de repositórios em duplas.",
-    highlights: [
-      "Demonstração de sensores preventivos para equipamentos",
+      "Encontro com dois estagiários recém-contratados, instalação prática de sensores preventivos de falhas em equipamentos (ar-condicionado) e apresentação do GitHub com criação de repositórios em duplas.",
+    bullets: [
+      "Instalação prática de sensores de monitoramento preventivo",
       "Workshop introdutório de GitHub",
-      "Atividade prática em duplas com envio de repositório"
+      "Criação e envio de repositórios em duplas"
     ]
   },
   {
-    id: "tebe-2025-03-04",
     filter: "tebe",
-    title: "3ª e 4ª Mentorias Tebe — Repositório Local & Entrega Final",
-    category: "Tebe • Entrega de Projeto",
-    year: "Outubro 2025",
-    cover: "https://picsum.photos/seed/tebe3/1000/620",
+    companyLabel: "Tebe",
+    yearGroup: "2025",
+    title: "3ª Mentoria Tebe — Versionamento Local com GitHub",
+    category: "Tebe • Mentoria 03",
+    year: "02/10/2025",
+    // TODO: Adicionar a foto exclusiva da 3ª mentoria da Tebe
+    cover: "",
+    coverAlt: "Registro da 3ª mentoria da Tebe sobre versionamento local no GitHub",
     description:
-      "No dia 02/10, integramos o repositório GitHub ao computador com suporte de Matheus Nard e Marcos. No dia 28/10, realizamos a entrega oficial do projeto desenvolvido pela equipe, recebendo feedback técnico e orientações de melhoria.",
-    highlights: [
-      "Integração de repositório GitHub no ambiente local (02/10)",
-      "Entrega oficial e avaliação do projeto pela Tebe (28/10)",
-      "Identificação de melhorias e resolução de problemas técnicos"
+      "Continuidade do aprendizado sobre GitHub, aprendendo a manusear o repositório criado anteriormente e integrá-lo diretamente ao computador com orientação passo a passo de Matheus Nard e Marcos.",
+    bullets: [
+      "Orientação prática de Matheus Nard e Marcos",
+      "Integração do repositório GitHub ao computador local",
+      "Organização de arquivos e fluxo de versionamento"
+    ]
+  },
+  {
+    filter: "tebe",
+    companyLabel: "Tebe",
+    yearGroup: "2025",
+    title: "4ª Mentoria Tebe — Entrega Oficial & Avaliação do Projeto",
+    category: "Tebe • Mentoria 04",
+    year: "28/10/2025",
+    // TODO: Adicionar a foto exclusiva da 4ª mentoria da Tebe
+    cover: "",
+    coverAlt: "Registro da 4ª mentoria da Tebe na entrega oficial do projeto",
+    description:
+      "Entrega oficial do projeto desenvolvido pela equipe, esclarecimento de dúvidas técnicas e recebimento de orientações práticas da Tebe para identificação de melhorias, correção de erros e refinamento final.",
+    bullets: [
+      "Entrega oficial do projeto desenvolvido pela equipe",
+      "Feedback técnico e alinhamento com objetivos da Tebe",
+      "Identificação de melhorias e correção de erros"
     ]
   }
 ];
 
+/* =========================================================
+   2. CERTIFICADOS OFICIAIS (REACT.JS + PYTHON 1 + PYTHON 2)
+========================================================= */
 const certificatesData = [
   {
     program: "TIC EM TRILHAS • PROGRAMA MCTI FUTURO",
     title: "Introdução a React.js",
     org: "Instituição Executora: Venturus • Coordenação: Softex",
-    desc: "Certificamos que João Pedro De Padua concluiu sua participação na trilha Introdução a React.js com carga horária de 30 horas oferecida pela instituição executora Venturus, iniciativa apoiada pelo Ministério da Ciência, Tecnologia e Inovação.",
-    meta: "Carga Horária: 30 horas • Campinas, 27 de março de 2025",
-    image: ""
+    desc: "Certificação de conclusão na trilha Introdução a React.js, com foco em componentes, estado, propriedades e construção de interfaces web modernas, apoiada pelo Ministério da Ciência, Tecnologia e Inovação.",
+    hours: "Carga Horária: 30 horas",
+    date: "Campinas, 27 de março de 2025",
+    image: "certificdo.png",
+    fileUrl: "certificdo.png",
+    fileLabel: "Ver certificado (Imagem)"
+  },
+  {
+    program: "CISCO NETWORKING ACADEMY • PYTHON INSTITUTE",
+    title: "Fundamentos do Python 1",
+    org: "Cisco Networking Academy & Python Institute",
+    desc: "Concluído com sucesso o curso Fundamentos do Python 1, abordando sintaxe básica, tipos de dados, estruturas de controle, funções e lógica de programação em Python.",
+    hours: "Cert ID: 15961357-d9a8-4b4d-a669-09061d4b97ab",
+    date: "Concluído em 18 de novembro de 2026",
+    image: "",
+    fileUrl: "Python_Essentials_1_certificate_joaopadua7-gmail-com_15961357-d9a8-4b4d-a669-09061d4b97ab.pdf",
+    fileLabel: "Ver certificado (PDF)"
+  },
+  {
+    program: "CISCO NETWORKING ACADEMY • PYTHON INSTITUTE",
+    title: "Fundamentos de Python 2",
+    org: "Cisco Networking Academy & Python Institute",
+    desc: "Concluído com sucesso o curso Fundamentos de Python 2, aprofundando em módulos, pacotes, programação orientada a objetos (POO), exceções e manipulação de arquivos.",
+    hours: "Cert ID: 185f4bef-78ae-488a-9bd3-3c5c5e831a43",
+    date: "Concluído em 18 de novembro de 2026",
+    image: "",
+    fileUrl: "Python_Essentials_2_certificate_joaopadua7-gmail-com_185f4bef-78ae-488a-9bd3-3c5c5e831a43.pdf",
+    fileLabel: "Ver certificado (PDF)"
   }
 ];
 
 /* =========================================================
-   2. HERO: CONTROLE DA SUA FOTO (P&B / COR E TROCA)
+   3. CONTADORES DINÂMICOS (VIVÊNCIAS, EMPRESAS E CERTIFICADOS)
 ========================================================= */
-const heroPortraitImg = document.getElementById("heroPortraitImg");
-const toggleBwBtn = document.getElementById("toggleBwBtn");
-const uploadHeroPhoto = document.getElementById("uploadHeroPhoto");
+function updateDynamicCounts() {
+  const totalExp = experiencesData.length;
+  const distinctCompanies = new Set(experiencesData.map((item) => item.filter)).size;
+  const totalCerts = certificatesData.length;
 
-toggleBwBtn.addEventListener("click", () => {
-  heroPortraitImg.classList.toggle("is-grayscale");
-});
+  const padTwo = (num) => String(num).padStart(2, "0");
 
-uploadHeroPhoto.addEventListener("change", (e) => {
-  const file = e.target.files[0];
-  if (!file) return;
-  const reader = new FileReader();
-  reader.onload = (ev) => {
-    heroPortraitImg.src = ev.target.result;
-  };
-  reader.readAsDataURL(file);
-});
+  const statExpEl = document.getElementById("statExperiencesCount");
+  const statCompEl = document.getElementById("statCompaniesCount");
+  const statCertEl = document.getElementById("statCertificatesCount");
+  const filterAllLabel = document.getElementById("filterAllLabel");
 
-/* =========================================================
-   3. HEADER FIXO COM BACKDROP-FILTER
-========================================================= */
-const siteHeader = document.getElementById("siteHeader");
-
-function handleHeaderScroll() {
-  siteHeader.classList.toggle("is-scrolled", window.scrollY > 36);
+  if (statExpEl) statExpEl.textContent = padTwo(totalExp);
+  if (statCompEl) statCompEl.textContent = padTwo(distinctCompanies);
+  if (statCertEl) statCertEl.textContent = padTwo(totalCerts);
+  if (filterAllLabel) filterAllLabel.textContent = `Todas (${totalExp})`;
 }
 
-window.addEventListener("scroll", handleHeaderScroll, { passive: true });
-handleHeaderScroll();
-
 /* =========================================================
-   4. HERO INTERATIVO (CANVAS FLUIDO)
+   4. CURSOR PERSONALIZADO, MAGNETISMO (--tx/--ty) & HERO PARALLAX
 ========================================================= */
-(function initHeroCanvas() {
-  const canvas = document.getElementById("heroCanvas");
-  if (!canvas) return;
+(function initCursorAndHeroFX() {
+  const isFinePointer = window.matchMedia("(pointer: fine)").matches;
+  const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  const ctx = canvas.getContext("2d");
-  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const dot = document.getElementById("cursorDot");
+  const ring = document.getElementById("cursorRing");
+  const hero = document.getElementById("hero");
+  const spotlight = document.getElementById("heroSpotlight");
+  const stage = document.getElementById("portraitStage");
+  const sheen = document.getElementById("portraitSheen");
 
-  let width = 0;
-  let height = 0;
-  let time = 0;
-  const mouse = { x: 0.65, y: 0.45, targetX: 0.65, targetY: 0.45 };
+  if (isFinePointer && !prefersReduced && dot && ring) {
+    document.documentElement.classList.add("has-custom-cursor");
 
-  function resize() {
-    width = canvas.width = window.innerWidth;
-    height = canvas.height = canvas.parentElement.offsetHeight;
+    let mouseX = 0;
+    let mouseY = 0;
+    let ringX = 0;
+    let ringY = 0;
+    let cursorVisible = false;
+    let cursorRafId = null;
+
+    function renderCursorFrame() {
+      if (!cursorVisible || document.hidden) {
+        cursorRafId = null;
+        return;
+      }
+
+      const dx = mouseX - ringX;
+      const dy = mouseY - ringY;
+      ringX += dx * 0.18;
+      ringY += dy * 0.18;
+
+      ring.style.left = `${ringX}px`;
+      ring.style.top = `${ringY}px`;
+
+      if (Math.abs(dx) > 0.1 || Math.abs(dy) > 0.1) {
+        cursorRafId = requestAnimationFrame(renderCursorFrame);
+      } else {
+        ring.style.left = `${mouseX}px`;
+        ring.style.top = `${mouseY}px`;
+        cursorRafId = null;
+      }
+    }
+
+    document.addEventListener(
+      "mousemove",
+      (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+
+        if (!cursorVisible) {
+          cursorVisible = true;
+          ringX = mouseX;
+          ringY = mouseY;
+          document.documentElement.classList.add("cursor-ready");
+        }
+
+        dot.style.left = `${mouseX}px`;
+        dot.style.top = `${mouseY}px`;
+
+        if (!cursorRafId && !document.hidden) {
+          cursorRafId = requestAnimationFrame(renderCursorFrame);
+        }
+      },
+      { passive: true }
+    );
+
+    document.addEventListener("mouseleave", () => {
+      cursorVisible = false;
+      document.documentElement.classList.remove("cursor-ready");
+    });
+
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden && cursorRafId) {
+        cancelAnimationFrame(cursorRafId);
+        cursorRafId = null;
+      }
+    });
+
+    document.addEventListener("mouseover", (e) => {
+      if (e.target.closest("a, button, .portrait-stage, .cert-card, .tool-card, .tcc-card")) {
+        document.body.classList.add("cursor-hover");
+      }
+    });
+
+    document.addEventListener("mouseout", (e) => {
+      if (e.target.closest("a, button, .portrait-stage, .cert-card, .tool-card, .tcc-card")) {
+        document.body.classList.remove("cursor-hover");
+      }
+    });
   }
 
-  window.addEventListener("resize", resize);
-  resize();
+  // Efeito Magnético via --tx / --ty sem conflitar com o transform do :active
+  if (!prefersReduced && isFinePointer) {
+    document.querySelectorAll(".magnetic").forEach((el) => {
+      el.addEventListener("mousemove", (e) => {
+        const rect = el.getBoundingClientRect();
+        const dx = (e.clientX - (rect.left + rect.width / 2)) * 0.2;
+        const dy = (e.clientY - (rect.top + rect.height / 2)) * 0.2;
+        el.style.setProperty("--tx", `${dx.toFixed(1)}px`);
+        el.style.setProperty("--ty", `${dy.toFixed(1)}px`);
+      });
+      el.addEventListener("mouseleave", () => {
+        el.style.setProperty("--tx", "0px");
+        el.style.setProperty("--ty", "0px");
+      });
+    });
+  }
+
+  // Spotlight do fundo do Hero
+  if (hero && spotlight && !prefersReduced) {
+    hero.addEventListener(
+      "mousemove",
+      (e) => {
+        const rect = hero.getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / rect.width) * 100;
+        const y = ((e.clientY - rect.top) / rect.height) * 100;
+        spotlight.style.setProperty("--mx", `${x.toFixed(1)}%`);
+        spotlight.style.setProperty("--my", `${y.toFixed(1)}%`);
+      },
+      { passive: true }
+    );
+  }
+
+  // Pausa o marquee SCALLORA quando o Hero sair da tela
+  if (hero && stage) {
+    const heroVisObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          stage.classList.toggle("is-offscreen", !entry.isIntersecting);
+        });
+      },
+      { threshold: 0.05 }
+    );
+    heroVisObserver.observe(hero);
+  }
+
+  // Tilt 3D na Foto + Parallax inverso nas faixas SCALLORA (desligado no mobile <= 640px)
+  if (stage && !prefersReduced) {
+    stage.addEventListener("mousemove", (e) => {
+      if (window.innerWidth <= 640) return;
+
+      const rect = stage.getBoundingClientRect();
+      const relX = (e.clientX - rect.left) / rect.width;
+      const relY = (e.clientY - rect.top) / rect.height;
+
+      const rotateY = (relX - 0.5) * 9;
+      const rotateX = (0.5 - relY) * 8;
+
+      stage.style.transform = `perspective(900px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg)`;
+
+      // Deslocamento no sentido oposto ao tilt (14px)
+      const bgTx = (0.5 - relX) * 28;
+      const bgTy = (0.5 - relY) * 24;
+      stage.style.setProperty("--tx", `${bgTx.toFixed(1)}px`);
+      stage.style.setProperty("--ty", `${bgTy.toFixed(1)}px`);
+
+      if (sheen) {
+        sheen.style.setProperty("--px", `${(relX * 100).toFixed(1)}%`);
+        sheen.style.setProperty("--py", `${(relY * 100).toFixed(1)}%`);
+      }
+    });
+
+    stage.addEventListener("mouseleave", () => {
+      stage.style.transform = "perspective(900px) rotateX(0deg) rotateY(0deg)";
+      stage.style.setProperty("--tx", "0px");
+      stage.style.setProperty("--ty", "0px");
+    });
+  }
+})();
+
+/* =========================================================
+   5. MENU MOBILE ACESSÍVEL & DESTAQUE DE SEÇÃO ATIVA
+========================================================= */
+(function initNavigation() {
+  const siteHeader = document.getElementById("siteHeader");
+  const menuToggle = document.getElementById("menuToggle");
+  const mobileDrawer = document.getElementById("mobileNavDrawer");
+  const mainContent = document.getElementById("main-content");
+  const siteFooter = document.getElementById("contato");
 
   window.addEventListener(
+    "scroll",
+    () => siteHeader.classList.toggle("is-scrolled", window.scrollY > 40),
+    { passive: true }
+  );
+
+  function setMobileMenu(open) {
+    if (!menuToggle || !mobileDrawer) return;
+    menuToggle.setAttribute("aria-expanded", String(open));
+    menuToggle.setAttribute("aria-label", open ? "Fechar menu de navegação" : "Abrir menu de navegação");
+    mobileDrawer.hidden = !open;
+    document.body.classList.toggle("modal-open", open);
+
+    if (mainContent) mainContent.inert = open;
+    if (siteFooter) siteFooter.inert = open;
+
+    if (open) {
+      const firstLink = mobileDrawer.querySelector("a");
+      if (firstLink) firstLink.focus();
+    } else {
+      menuToggle.focus();
+    }
+  }
+
+  if (menuToggle && mobileDrawer) {
+    menuToggle.addEventListener("click", () => {
+      const isExpanded = menuToggle.getAttribute("aria-expanded") === "true";
+      setMobileMenu(!isExpanded);
+    });
+
+    mobileDrawer.querySelectorAll(".mobile-nav-link").forEach((link) => {
+      link.addEventListener("click", () => setMobileMenu(false));
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && menuToggle.getAttribute("aria-expanded") === "true") {
+        setMobileMenu(false);
+      }
+    });
+
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 640 && menuToggle.getAttribute("aria-expanded") === "true") {
+        setMobileMenu(false);
+      }
+    });
+  }
+
+  // IntersectionObserver para destacar seção ativa no menu
+  const navLinks = document.querySelectorAll("[data-nav-link]");
+  const observedSections = Array.from(navLinks)
+    .map((link) => document.querySelector(link.getAttribute("href")))
+    .filter(Boolean);
+
+  if (observedSections.length) {
+    const sectionObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const id = `#${entry.target.id}`;
+            navLinks.forEach((link) => {
+              link.classList.toggle("is-active", link.getAttribute("href") === id);
+            });
+          }
+        });
+      },
+      { rootMargin: "-35% 0px -55% 0px" }
+    );
+
+    observedSections.forEach((sec) => sectionObserver.observe(sec));
+  }
+})();
+
+/* =========================================================
+   6. ABAS WAI-ARIA DO PROJETO TCC (SCALLORA)
+========================================================= */
+(function initTccTabs() {
+  const tabList = document.querySelector(".tcc-tabs-bar");
+  if (!tabList) return;
+
+  const tabs = Array.from(tabList.querySelectorAll('[role="tab"]'));
+  const panels = Array.from(document.querySelectorAll('[role="tabpanel"]'));
+
+  function activateTab(selectedTab, shouldFocus = false) {
+    tabs.forEach((tab) => {
+      const isSelected = tab === selectedTab;
+      tab.classList.toggle("active", isSelected);
+      tab.setAttribute("aria-selected", String(isSelected));
+      tab.setAttribute("tabindex", isSelected ? "0" : "-1");
+    });
+
+    if (window.innerWidth <= 640) {
+      selectedTab.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+    }
+
+    const targetPanelId = selectedTab.getAttribute("aria-controls");
+    panels.forEach((panel) => {
+      const match = panel.id === targetPanelId;
+      panel.hidden = !match;
+      panel.classList.toggle("is-active", match);
+    });
+
+    if (shouldFocus) selectedTab.focus();
+  }
+
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", () => activateTab(tab, false));
+
+    tab.addEventListener("keydown", (e) => {
+      const idx = tabs.indexOf(tab);
+      let nextIdx = null;
+
+      if (e.key === "ArrowRight") nextIdx = (idx + 1) % tabs.length;
+      else if (e.key === "ArrowLeft") nextIdx = (idx - 1 + tabs.length) % tabs.length;
+      else if (e.key === "Home") nextIdx = 0;
+      else if (e.key === "End") nextIdx = tabs.length - 1;
+
+      if (nextIdx !== null) {
+        e.preventDefault();
+        activateTab(tabs[nextIdx], true);
+      }
+    });
+  });
+})();
+
+/* =========================================================
+   7. CERTIFICADOS (COM ALTURA UNIFORME + ABRIR PDF/IMAGEM)
+========================================================= */
+function renderCertificates() {
+  const certificatesGrid = document.getElementById("certificatesGrid");
+  if (!certificatesGrid) return;
+
+  const frag = document.createDocumentFragment();
+
+  certificatesData.forEach((cert) => {
+    const card = document.createElement("article");
+    card.className = "cert-card reveal";
+
+    const previewContent = cert.image
+      ? `<img src="${cert.image}" alt="Certificado ${cert.title}" width="400" height="250" loading="lazy" decoding="async" />`
+      : `<div class="cert-doc-preview" aria-hidden="true">
+           <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+             <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+             <polyline points="14 2 14 8 20 8" />
+             <line x1="8" y1="13" x2="16" y2="13" />
+             <line x1="8" y1="17" x2="13" y2="17" />
+           </svg>
+           <span class="mono-label">DOCUMENTO PDF</span>
+         </div>`;
+
+    card.innerHTML = `
+      <div>
+        <div class="cert-card-thumb">${previewContent}</div>
+        <span class="mono-label accent">${cert.program}</span>
+        <h3 class="cert-card-title">${cert.title}</h3>
+        <p class="cert-card-org">${cert.org}</p>
+        <p class="cert-card-desc">${cert.desc}</p>
+      </div>
+      <div class="cert-card-footer">
+        <span class="mono-label">${cert.hours}</span>
+        <span class="mono-label muted">${cert.date}</span>
+        <a href="${cert.fileUrl}" target="_blank" rel="noopener noreferrer" class="btn-pill btn-pill-ghost cert-action-btn">
+          <span class="btn-text">${cert.fileLabel} &nearr;</span>
+        </a>
+      </div>
+    `;
+
+    frag.appendChild(card);
+  });
+
+  certificatesGrid.appendChild(frag);
+}
+
+/* =========================================================
+   8. VIVÊNCIAS AGRUPADAS, PREVIEW SOB DEMANDA & MODAL COM FOCUS TRAP
+========================================================= */
+(function initExperiencesAndModal() {
+  const container = document.getElementById("experiencesContainer");
+  const filterBar = document.getElementById("filterBar");
+  const moreWrap = document.getElementById("experiencesMoreWrap");
+  const toggleMoreBtn = document.getElementById("toggleAllExperiencesBtn");
+  const toggleMoreLabel = document.getElementById("toggleAllExperiencesLabel");
+
+  const projectPreview = document.getElementById("projectPreview");
+  const projectPreviewImg = document.getElementById("projectPreviewImg");
+  const projectPreviewFallback = document.getElementById("projectPreviewFallback");
+  const projectPreviewFallbackTitle = document.getElementById("projectPreviewFallbackTitle");
+
+  const expModal = document.getElementById("expModal");
+  const closeModalBtn = document.getElementById("closeModalBtn");
+  const siteHeader = document.getElementById("siteHeader");
+  const mainContent = document.getElementById("main-content");
+  const siteFooter = document.getElementById("contato");
+
+  const INITIAL_VISIBLE_LIMIT = 8;
+  let currentFilter = "todos";
+  let showAllInTodos = false;
+  let lastFocusedTrigger = null;
+
+  const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const isFinePointer = window.matchMedia("(pointer: fine)").matches;
+
+  let cursorX = 0;
+  let cursorY = 0;
+  let previewX = 0;
+  let previewY = 0;
+  let previewActive = false;
+  let previewRafId = null;
+  const preloadedUrls = new Set();
+
+  function preloadImageOnce(url) {
+    if (!url || preloadedUrls.has(url)) return;
+    preloadedUrls.add(url);
+    const img = new Image();
+    img.src = url;
+  }
+
+  function animatePreview() {
+    if (!previewActive || document.hidden) {
+      previewRafId = null;
+      return;
+    }
+    previewX += (cursorX + 165 - previewX) * 0.16;
+    previewY += (cursorY - 20 - previewY) * 0.16;
+    projectPreview.style.left = `${previewX}px`;
+    projectPreview.style.top = `${previewY}px`;
+    previewRafId = requestAnimationFrame(animatePreview);
+  }
+
+  document.addEventListener(
     "mousemove",
     (e) => {
-      mouse.targetX = e.clientX / Math.max(width, 1);
-      mouse.targetY = e.clientY / Math.max(height, 1);
+      cursorX = e.clientX;
+      cursorY = e.clientY;
     },
     { passive: true }
   );
 
-  function draw() {
-    time += 0.008;
-    mouse.x += (mouse.targetX - mouse.x) * 0.05;
-    mouse.y += (mouse.targetY - mouse.y) * 0.05;
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden && previewRafId) {
+      cancelAnimationFrame(previewRafId);
+      previewRafId = null;
+    }
+  });
 
-    ctx.clearRect(0, 0, width, height);
+  function showPreviewForIndex(idx) {
+    if (!isFinePointer || prefersReduced) return;
+    const item = experiencesData[idx];
+    if (!item) return;
 
-    const cx1 = width * mouse.x + Math.sin(time) * 40;
-    const cy1 = height * mouse.y + Math.cos(time * 0.8) * 30;
-    const radius1 = Math.max(width, height) * 0.42;
+    if (item.cover) {
+      projectPreviewImg.src = item.cover;
+      projectPreviewImg.hidden = false;
+      projectPreviewFallback.hidden = true;
+    } else {
+      projectPreviewImg.hidden = true;
+      projectPreviewImg.removeAttribute("src");
+      projectPreviewFallbackTitle.textContent = item.title;
+      projectPreviewFallback.hidden = false;
+    }
 
-    const grad1 = ctx.createRadialGradient(cx1, cy1, 0, cx1, cy1, radius1);
-    grad1.addColorStop(0, "rgba(255, 90, 31, 0.22)");
-    grad1.addColorStop(0.5, "rgba(255, 90, 31, 0.06)");
-    grad1.addColorStop(1, "rgba(10, 10, 10, 0)");
+    for (let next = idx + 1; next < experiencesData.length; next++) {
+      if (experiencesData[next].cover) {
+        preloadImageOnce(experiencesData[next].cover);
+        break;
+      }
+    }
 
-    ctx.fillStyle = grad1;
-    ctx.fillRect(0, 0, width, height);
-
-    if (!prefersReducedMotion) {
-      requestAnimationFrame(draw);
+    if (!previewActive) {
+      previewActive = true;
+      previewX = cursorX + 165;
+      previewY = cursorY - 20;
+      projectPreview.style.left = `${previewX}px`;
+      projectPreview.style.top = `${previewY}px`;
+      projectPreview.classList.add("is-active");
+      if (!previewRafId && !document.hidden) {
+        previewRafId = requestAnimationFrame(animatePreview);
+      }
     }
   }
 
-  draw();
+  function hidePreview() {
+    previewActive = false;
+    projectPreview.classList.remove("is-active");
+    if (previewRafId) {
+      cancelAnimationFrame(previewRafId);
+      previewRafId = null;
+    }
+  }
+
+  function renderExperiences() {
+    const indexed = experiencesData.map((item, idx) => ({ item, idx }));
+    const filtered =
+      currentFilter === "todos"
+        ? indexed
+        : indexed.filter(({ item }) => item.filter === currentFilter);
+
+    const shouldPaginate = currentFilter === "todos" && !showAllInTodos && filtered.length > INITIAL_VISIBLE_LIMIT;
+    const visibleItems = shouldPaginate ? filtered.slice(0, INITIAL_VISIBLE_LIMIT) : filtered;
+
+    const groups = [];
+    visibleItems.forEach((entry) => {
+      const groupKey = `${entry.item.yearGroup} · ${entry.item.companyLabel}`;
+      const lastGroup = groups[groups.length - 1];
+      if (lastGroup && lastGroup.key === groupKey) {
+        lastGroup.entries.push(entry);
+      } else {
+        groups.push({ key: groupKey, entries: [entry] });
+      }
+    });
+
+    const frag = document.createDocumentFragment();
+
+    groups.forEach((group) => {
+      const sectionEl = document.createElement("div");
+      sectionEl.className = "exp-group";
+
+      const headerEl = document.createElement("div");
+      headerEl.className = "exp-group-header";
+      headerEl.innerHTML = `<span class="mono-label accent">${group.key}</span>`;
+      sectionEl.appendChild(headerEl);
+
+      const ul = document.createElement("ul");
+      ul.className = "projects-list";
+
+      group.entries.forEach(({ item, idx }) => {
+        const li = document.createElement("li");
+        li.className = "project-list-item";
+
+        const thumbHtml = item.cover
+          ? `<img src="${item.cover}" alt="" width="48" height="48" loading="lazy" decoding="async" />`
+          : `<span class="project-mobile-thumb-empty" aria-hidden="true">AMS</span>`;
+
+        li.innerHTML = `
+          <button type="button" class="project-row" data-exp-index="${idx}">
+            <span class="project-row-main">
+              <span class="project-mobile-thumb">${thumbHtml}</span>
+              <span class="project-row-title">${item.title}</span>
+            </span>
+            <span class="mono-label muted project-row-category">${item.category}</span>
+            <span class="mono-label accent">${item.year}</span>
+          </button>
+        `;
+
+        ul.appendChild(li);
+      });
+
+      sectionEl.appendChild(ul);
+      frag.appendChild(sectionEl);
+    });
+
+    container.replaceChildren(frag);
+
+    if (currentFilter === "todos" && filtered.length > INITIAL_VISIBLE_LIMIT) {
+      moreWrap.hidden = false;
+      toggleMoreLabel.textContent = showAllInTodos
+        ? "Mostrar menos"
+        : `Ver todas (${filtered.length})`;
+    } else {
+      moreWrap.hidden = true;
+    }
+  }
+
+  container.addEventListener("pointerover", (e) => {
+    const row = e.target.closest(".project-row");
+    if (!row || !container.contains(row)) return;
+    showPreviewForIndex(Number(row.dataset.expIndex));
+  });
+
+  container.addEventListener("pointerout", (e) => {
+    const row = e.target.closest(".project-row");
+    if (!row) return;
+    if (!e.relatedTarget || !row.contains(e.relatedTarget)) {
+      hidePreview();
+    }
+  });
+
+  container.addEventListener("focusin", (e) => {
+    const row = e.target.closest(".project-row");
+    if (row) showPreviewForIndex(Number(row.dataset.expIndex));
+  });
+
+  container.addEventListener("focusout", (e) => {
+    const row = e.target.closest(".project-row");
+    if (row) hidePreview();
+  });
+
+  container.addEventListener("click", (e) => {
+    const row = e.target.closest(".project-row");
+    if (!row) return;
+    openModal(Number(row.dataset.expIndex), row);
+  });
+
+  // Filtros com aria-pressed
+  filterBar.addEventListener("click", (e) => {
+    const btn = e.target.closest(".filter-btn");
+    if (!btn) return;
+
+    filterBar.querySelectorAll(".filter-btn").forEach((b) => {
+      const isActive = b === btn;
+      b.classList.toggle("active", isActive);
+      b.setAttribute("aria-pressed", String(isActive));
+    });
+
+    if (window.innerWidth <= 640) {
+      btn.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+    }
+
+    currentFilter = btn.dataset.filter;
+    showAllInTodos = false;
+    hidePreview();
+    renderExperiences();
+  });
+
+  if (toggleMoreBtn) {
+    toggleMoreBtn.addEventListener("click", () => {
+      showAllInTodos = !showAllInTodos;
+      renderExperiences();
+    });
+  }
+
+  function setBackgroundInert(state) {
+    if (siteHeader) siteHeader.inert = state;
+    if (mainContent) mainContent.inert = state;
+    if (siteFooter) siteFooter.inert = state;
+  }
+
+  function openModal(idx, triggerEl) {
+    const item = experiencesData[idx];
+    if (!item) return;
+
+    hidePreview();
+    lastFocusedTrigger = triggerEl || document.activeElement;
+
+    document.getElementById("modalMeta").textContent = `${item.category} • ${item.year}`;
+    document.getElementById("modalTitle").textContent = item.title;
+
+    const modalCover = document.getElementById("modalCover");
+    const modalPlaceholder = document.getElementById("modalCoverPlaceholder");
+
+    if (item.cover) {
+      modalCover.src = item.cover;
+      modalCover.alt = item.coverAlt || `Registro fotográfico: ${item.title}`;
+      modalCover.hidden = false;
+      modalPlaceholder.hidden = true;
+    } else {
+      modalCover.hidden = true;
+      modalCover.removeAttribute("src");
+      modalCover.alt = "";
+      modalPlaceholder.hidden = false;
+    }
+
+    document.getElementById("modalDesc").textContent = item.description;
+    document.getElementById("modalBullets").innerHTML = item.bullets
+      .map((b) => `<li>${b}</li>`)
+      .join("");
+
+    expModal.hidden = false;
+    document.body.classList.add("modal-open");
+    setBackgroundInert(true);
+    closeModalBtn.focus();
+  }
+
+  function closeModal() {
+    if (expModal.hidden) return;
+    expModal.hidden = true;
+    document.body.classList.remove("modal-open");
+    setBackgroundInert(false);
+
+    if (lastFocusedTrigger && typeof lastFocusedTrigger.focus === "function") {
+      lastFocusedTrigger.focus();
+    }
+  }
+
+  closeModalBtn.addEventListener("click", closeModal);
+
+  expModal.addEventListener("click", (e) => {
+    if (e.target === expModal) closeModal();
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (expModal.hidden) return;
+
+    if (e.key === "Escape") {
+      closeModal();
+      return;
+    }
+
+    if (e.key === "Tab") {
+      const focusables = Array.from(
+        expModal.querySelectorAll('button:not([disabled]), a[href], [tabindex]:not([tabindex="-1"])')
+      );
+      if (!focusables.length) return;
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
+  });
+
+  renderExperiences();
 })();
 
 /* =========================================================
-   5. CURSOR CUSTOMIZADO & PREVIEW FLUTUANTE
+   9. COPIAR E-MAIL & SCROLL REVEAL
 ========================================================= */
-const customCursor = document.getElementById("customCursor");
-const projectPreview = document.getElementById("projectPreview");
-const projectPreviewImg = document.getElementById("projectPreviewImg");
+const copyEmailBtn = document.getElementById("copyEmailBtn");
+if (copyEmailBtn) {
+  const labelSpan = copyEmailBtn.querySelector(".btn-text");
+  copyEmailBtn.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText("joaopedro.padua@fatec.sp.gov.br");
+    } catch {}
+    if (labelSpan) labelSpan.textContent = "Copiado!";
+    setTimeout(() => {
+      if (labelSpan) labelSpan.textContent = "Copiar E-mail";
+    }, 2200);
+  });
+}
 
-let cursorX = 0;
-let cursorY = 0;
-let previewX = 0;
-let previewY = 0;
+updateDynamicCounts();
+renderCertificates();
 
-document.addEventListener(
-  "mousemove",
-  (e) => {
-    cursorX = e.clientX;
-    cursorY = e.clientY;
-    customCursor.classList.add("is-visible");
-    customCursor.style.left = `${cursorX}px`;
-    customCursor.style.top = `${cursorY}px`;
+const revealObserver = new IntersectionObserver(
+  (entries, obs) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+        obs.unobserve(entry.target);
+      }
+    });
   },
-  { passive: true }
+  { threshold: 0.08 }
 );
 
-document.addEventListener("mouseleave", () => {
-  customCursor.classList.remove("is-visible");
-});
-
-function animateFloatingPreview() {
-  previewX += (cursorX + 170 - previewX) * 0.14;
-  previewY += (cursorY - 20 - previewY) * 0.14;
-  projectPreview.style.left = `${previewX}px`;
-  projectPreview.style.top = `${previewY}px`;
-  requestAnimationFrame(animateFloatingPreview);
-}
-animateFloatingPreview();
-
-function bindCursorHoverTargets() {
-  document.querySelectorAll('[data-cursor="hover"], a, button').forEach((el) => {
-    el.addEventListener("mouseenter", () => customCursor.classList.add("is-hovering"));
-    el.addEventListener("mouseleave", () => customCursor.classList.remove("is-hovering"));
-  });
-}
-
-/* =========================================================
-   6. LISTA DE MENTORIAS & MODAL COM UPLOAD DE FOTO
-========================================================= */
-const projectsList = document.getElementById("projectsList");
-const projectModal = document.getElementById("projectModal");
-const closeModalBtn = document.getElementById("closeModalBtn");
-const modalPhotoInput = document.getElementById("modalPhotoInput");
-let activeProject = null;
-let lastFocusedElement = null;
-
-function renderExperiences(filter = "todos") {
-  projectsList.innerHTML = "";
-
-  const filtered =
-    filter === "todos"
-      ? experiencesData
-      : experiencesData.filter((item) => item.filter === filter);
-
-  filtered.forEach((item) => {
-    const row = document.createElement("button");
-    row.type = "button";
-    row.className = "project-row reveal is-visible";
-    row.setAttribute("role", "listitem");
-    row.setAttribute("data-cursor", "hover");
-    row.innerHTML = `
-      <span class="project-row-title">${item.title}</span>
-      <span class="mono-label project-row-cat">${item.category}</span>
-      <span class="mono-label project-row-year">${item.year}</span>
-    `;
-
-    row.addEventListener("mouseenter", () => {
-      projectPreviewImg.src = item.cover;
-      projectPreview.classList.add("is-active");
-    });
-
-    row.addEventListener("mouseleave", () => {
-      projectPreview.classList.remove("is-active");
-    });
-
-    row.addEventListener("click", () => openProjectModal(item));
-    projectsList.appendChild(row);
-  });
-
-  bindCursorHoverTargets();
-}
-
-document.getElementById("filterPills").addEventListener("click", (e) => {
-  if (!e.target.classList.contains("filter-btn")) return;
-  document.querySelectorAll(".filter-btn").forEach((b) => b.classList.remove("active"));
-  e.target.classList.add("active");
-  renderExperiences(e.target.dataset.filter);
-});
-
-function openProjectModal(item) {
-  activeProject = item;
-  lastFocusedElement = document.activeElement;
-  projectPreview.classList.remove("is-active");
-
-  document.getElementById("modalCategory").textContent = item.category;
-  document.getElementById("modalYear").textContent = item.year;
-  document.getElementById("modalTitle").textContent = item.title;
-
-  const coverImg = document.getElementById("modalCoverImg");
-  coverImg.src = item.cover;
-  coverImg.alt = item.title;
-
-  document.getElementById("modalDescription").textContent = item.description;
-
-  const deliverablesList = document.getElementById("modalDeliverables");
-  deliverablesList.innerHTML = item.highlights.map((h) => `<li>${h}</li>`).join("");
-
-  projectModal.hidden = false;
-  document.body.classList.add("modal-open");
-  closeModalBtn.focus();
-}
-
-modalPhotoInput.addEventListener("change", (e) => {
-  const file = e.target.files[0];
-  if (!file || !activeProject) return;
-
-  const reader = new FileReader();
-  reader.onload = (ev) => {
-    activeProject.cover = ev.target.result;
-    document.getElementById("modalCoverImg").src = ev.target.result;
-  };
-  reader.readAsDataURL(file);
-});
-
-function closeProjectModal() {
-  projectModal.hidden = true;
-  document.body.classList.remove("modal-open");
-  if (lastFocusedElement) lastFocusedElement.focus();
-}
-
-closeModalBtn.addEventListener("click", closeProjectModal);
-projectModal.addEventListener("click", (e) => {
-  if (e.target === projectModal) closeProjectModal();
-});
-document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape" && !projectModal.hidden) closeProjectModal();
-});
-
-/* =========================================================
-   7. CERTIFICADOS (CARROSSEL, UPLOAD DE IMAGEM & CADASTRO)
-========================================================= */
-let currentCertIndex = 0;
-const certCard = document.getElementById("certCard");
-const certPreviewImg = document.getElementById("certPreviewImg");
-const certImageInput = document.getElementById("certImageInput");
-
-function updateCertificateDisplay(index) {
-  certCard.classList.add("is-fading");
-
-  setTimeout(() => {
-    const cert = certificatesData[index];
-    document.getElementById("certProgram").textContent = cert.program;
-    document.getElementById("certTitle").textContent = cert.title;
-    document.getElementById("certOrg").textContent = cert.org;
-    document.getElementById("certDesc").textContent = cert.desc;
-    document.getElementById("certMeta").textContent = cert.meta;
-
-    if (cert.image) {
-      certPreviewImg.src = cert.image;
-      certPreviewImg.hidden = false;
-    } else {
-      certPreviewImg.hidden = true;
-    }
-
-    document.getElementById("certCounter").textContent = `${String(index + 1).padStart(
-      2,
-      "0"
-    )} / ${String(certificatesData.length).padStart(2, "0")}`;
-
-    certCard.classList.remove("is-fading");
-  }, 180);
-}
-
-certImageInput.addEventListener("change", (e) => {
-  const file = e.target.files[0];
-  if (!file) return;
-
-  const reader = new FileReader();
-  reader.onload = (ev) => {
-    certificatesData[currentCertIndex].image = ev.target.result;
-    certPreviewImg.src = ev.target.result;
-    certPreviewImg.hidden = false;
-  };
-  reader.readAsDataURL(file);
-});
-
-document.getElementById("prevCert").addEventListener("click", () => {
-  currentCertIndex =
-    (currentCertIndex - 1 + certificatesData.length) % certificatesData.length;
-  updateCertificateDisplay(currentCertIndex);
-});
-
-document.getElementById("nextCert").addEventListener("click", () => {
-  currentCertIndex = (currentCertIndex + 1) % certificatesData.length;
-  updateCertificateDisplay(currentCertIndex);
-});
-
-const addCertForm = document.getElementById("addCertForm");
-document.getElementById("openAddCertBtn").addEventListener("click", () => {
-  addCertForm.hidden = false;
-});
-document.getElementById("cancelAddCertBtn").addEventListener("click", () => {
-  addCertForm.hidden = true;
-});
-
-addCertForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-  const title = document.getElementById("newCertTitle").value.trim();
-  const org = document.getElementById("newCertOrg").value.trim();
-  const hours = document.getElementById("newCertHours").value.trim();
-  const date = document.getElementById("newCertDate").value.trim();
-  const desc = document.getElementById("newCertDesc").value.trim();
-
-  certificatesData.unshift({
-    program: "CERTIFICAÇÃO COMPLEMENTAR",
-    title,
-    org,
-    desc: desc || `Certificado de conclusão emitido para João Pedro De Padua.`,
-    meta: `Carga Horária: ${hours} • ${date}`,
-    image: ""
-  });
-
-  currentCertIndex = 0;
-  updateCertificateDisplay(0);
-  addCertForm.reset();
-  addCertForm.hidden = true;
-});
-
-/* =========================================================
-   8. FORMULÁRIO DE CONTATO & COPIAR E-MAIL
-========================================================= */
-document.getElementById("contactForm").addEventListener("submit", (e) => {
-  e.preventDefault();
-
-  const nome = document.getElementById("nome");
-  const email = document.getElementById("email");
-  const mensagem = document.getElementById("mensagem");
-
-  const erroNome = document.getElementById("erroNome");
-  const erroEmail = document.getElementById("erroEmail");
-  const erroMensagem = document.getElementById("erroMensagem");
-  const formFeedback = document.getElementById("formFeedback");
-
-  let isValid = true;
-  erroNome.textContent = "";
-  erroEmail.textContent = "";
-  erroMensagem.textContent = "";
-  formFeedback.textContent = "";
-
-  if (nome.value.trim().length < 2) {
-    erroNome.textContent = "Por favor, informe seu nome.";
-    isValid = false;
-  }
-
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())) {
-    erroEmail.textContent = "Digite um e-mail válido.";
-    isValid = false;
-  }
-
-  if (mensagem.value.trim().length < 10) {
-    erroMensagem.textContent = "Escreva uma mensagem com pelo menos 10 caracteres.";
-    isValid = false;
-  }
-
-  if (isValid) {
-    formFeedback.textContent = "Mensagem enviada com sucesso! Obrigado pelo contato.";
-    e.target.reset();
-  }
-});
-
-document.getElementById("copyEmailBtn").addEventListener("click", async () => {
-  const emailText = document.getElementById("myEmail").textContent.trim();
-  const copyBtnText = document.getElementById("copyEmailText");
-
-  try {
-    await navigator.clipboard.writeText(emailText);
-    copyBtnText.textContent = "Copiado!";
-    setTimeout(() => {
-      copyBtnText.textContent = "Copiar";
-    }, 2200);
-  } catch {
-    copyBtnText.textContent = "Erro";
-  }
-});
-
-/* =========================================================
-   9. SCROLL REVEAL (INTERSECTION OBSERVER)
-========================================================= */
-function initScrollReveal() {
-  const observer = new IntersectionObserver(
-    (entries, obs) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-          obs.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.1 }
-  );
-
-  document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
-}
-
-renderExperiences();
-updateCertificateDisplay(0);
-initScrollReveal();
+document.querySelectorAll(".reveal").forEach((el) => revealObserver.observe(el));
