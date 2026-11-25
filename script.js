@@ -1,15 +1,4 @@
 /* =========================================================
-   DICA DE PERFORMANCE — CONVERSÃO DAS IMAGENS PARA WEBP:
-   As imagens atuais (~15 MB no total) podem ser convertidas para WebP
-   reduzindo em até 75% o peso sem perda visível de qualidade:
-   - Linux / macOS (Bash):
-     for f in *.png; do cwebp -q 82 "$f" -o "${f%.png}.webp"; done
-   - Windows (PowerShell com libwebp instalado):
-     Get-ChildItem *.png | ForEach-Object { cwebp -q 82 $_.Name -o ($_.BaseName + ".webp") }
-   Após gerar foto-perfil.webp, descomente a tag <source> no index.html.
-========================================================= */
-
-/* =========================================================
    1. DADOS DAS 20 VIVÊNCIAS & MENTORIAS
 ========================================================= */
 const experiencesData = [
@@ -54,7 +43,7 @@ const experiencesData = [
     title: "2ª Mentoria DevCoffee — Cargos de uma Software House",
     category: "DevCoffee • Mentoria 02",
     year: "06/09/2024",
-    cover: "visita3.png",
+    cover: "visita.png",
     coverAlt: "Mentores da DevCoffee explicando os cargos de uma software house aos alunos",
     description:
       "Com a presença de Matheus Marcelino e José Leite, conhecemos os diferentes cargos e funções de uma software house, compreendendo as responsabilidades de cada profissional e sua importância na equipe.",
@@ -71,7 +60,7 @@ const experiencesData = [
     title: "1ª Mentoria Fundação Iochpe — Escolha do Curso AMS & Apoio",
     category: "Fundação Iochpe • Mentoria 01",
     year: "06/09/2024",
-    cover: "visita4.png",
+    cover: "visita9.png",
     coverAlt: "Roda de conversa da turma AMS com representantes da Fundação Iochpe",
     description:
       "Bate-papo com os alunos sobre os motivos que levaram cada um a escolher o curso AMS e suas expectativas em relação à formação. Também conhecemos a história e ações da Fundação Iochpe e recebemos a notícia da doação que proporcionou a viagem técnica da turma.",
@@ -88,7 +77,7 @@ const experiencesData = [
     title: "3ª Mentoria DevCoffee — Formação das Equipes",
     category: "DevCoffee • Mentoria 03",
     year: "11/09/2024",
-    cover: "visita5.png",
+    cover: "visita17.png",
     coverAlt: "Estudantes organizados em equipes multidisciplinares na mentoria da DevCoffee",
     description:
       "Organização dos grupos de quatro integrantes, unindo dois alunos de Administração e dois de Desenvolvimento de Sistemas, para iniciar o brainstorming e o planejamento colaborativo do projeto ao longo do curso.",
@@ -105,7 +94,7 @@ const experiencesData = [
     title: "4ª Mentoria DevCoffee — Dinâmica Cliente & Fornecedor",
     category: "DevCoffee • Mentoria 04",
     year: "24/09/2024",
-    cover: "visita6.png",
+    cover: "visita9.png",
     coverAlt: "Equipes realizando dinâmica prática de cliente e fornecedor em sala",
     description:
       "Retomada dos grupos formados na mentoria anterior para troca de ideias com as equipes parceiras. Cada grupo atuou como cliente do outro, apresentando necessidades e expectativas para orientar o planejamento.",
@@ -122,7 +111,7 @@ const experiencesData = [
     title: "5ª Mentoria DevCoffee — Especificação de Requisitos",
     category: "DevCoffee • Mentoria 05",
     year: "07/10/2024",
-    cover: "visita7.png",
+    cover: "visita10.png",
     coverAlt: "Desenvolvedor orientando alunos na especificação de requisitos de software",
     description:
       "Sob orientação do desenvolvedor José, elaboramos perguntas sobre especificação de requisitos e as encaminhamos ao grupo parceiro, além de recebermos perguntas da outra equipe para responder na aula seguinte.",
@@ -139,7 +128,7 @@ const experiencesData = [
     title: "6ª Mentoria DevCoffee — Acompanhamento & Evolução",
     category: "DevCoffee • Mentoria 06",
     year: "22/10/2024",
-    cover: "visita8.png",
+    cover: "visita11.png",
     coverAlt: "Acompanhamento do progresso dos grupos durante mentoria da DevCoffee",
     description:
       "Reunião com a DevCoffee para dar sequência ao trabalho em grupo, retomar atividades pendentes e organizar as próximas etapas colocando em prática as orientações já recebidas.",
@@ -156,7 +145,7 @@ const experiencesData = [
     title: "7ª Mentoria DevCoffee — Documento de Requisitos",
     category: "DevCoffee • Mentoria 07",
     year: "07/11/2024",
-    cover: "visita9.png",
+    cover: "visita16.png",
     coverAlt: "Alunos redigindo o Documento de Requisitos com apoio dos mentores",
     description:
       "Aprofundamento nas necessidades e expectativas do cliente e início da elaboração formal do Documento de Requisitos, registrando funcionalidades e características essenciais do produto.",
@@ -173,7 +162,7 @@ const experiencesData = [
     title: "Visita Técnica IBM (Parte 1) — Cultura & Bem-Estar",
     category: "IBM Brasil • Visita Técnica",
     year: "22/11/2024",
-    cover: "visita10.png",
+    cover: "visita5.png",
     coverAlt: "Turma visitando as áreas de convivência e bem-estar na unidade da IBM",
     description:
       "Acompanhados por Bruna, conhecemos os ambientes da IBM e sua cultura organizacional voltada ao bem-estar dos colaboradores, incluindo áreas de massagem, refeitórios, pebolim e o boneco de boxe Boby.",
@@ -190,7 +179,7 @@ const experiencesData = [
     title: "Visita Técnica IBM (Parte 2) — Palestra sobre Inteligência Artificial",
     category: "IBM Brasil • Palestra IA",
     year: "22/11/2024",
-    cover: "visita11.png",
+    cover: "visita4.png",
     coverAlt: "Palestra técnica sobre Inteligência Artificial no auditório da IBM",
     description:
       "Segunda palestra conduzida por Igor, discutindo os benefícios, aplicações práticas e riscos do uso da Inteligência Artificial, gerando reflexão sobre responsabilidade e ética na tecnologia.",
@@ -207,7 +196,7 @@ const experiencesData = [
     title: "Visita Técnica IBM (Parte 3) — Carreiras & Encerramento",
     category: "IBM Brasil • Carreiras",
     year: "22/11/2024",
-    cover: "visita12.png",
+    cover: "visita3.png",
     coverAlt: "Foto oficial da turma no encerramento da visita técnica à IBM",
     description:
       "Bate-papo final sobre oportunidades profissionais, programas de entrada e benefícios corporativos oferecidos pela IBM, encerrando a viagem técnica com parada em Hortolândia.",
@@ -292,7 +281,7 @@ const experiencesData = [
     title: "1ª Mentoria Tebe — Alinhamento & Liderança",
     category: "Tebe • Mentoria 01",
     year: "04/09/2025",
-    cover: "visita17.png",
+    cover: "visita7.png",
     coverAlt: "Equipe da Tebe apresentando o desafio do projeto para a turma",
     description:
       "Visita da empresa Tebe apresentando seus objetivos, serviços e expectativas para o projeto da turma. Conhecemos os profissionais responsáveis pelo acompanhamento: Matheus Nard, Marco (CEO) e Marcos.",
@@ -309,8 +298,7 @@ const experiencesData = [
     title: "2ª Mentoria Tebe — Sensores IoT & Introdução ao GitHub",
     category: "Tebe • Mentoria 02",
     year: "18/09/2025",
-    // TODO: Adicionar a foto exclusiva da 2ª mentoria da Tebe
-    cover: "",
+    cover: "visita20.png",
     coverAlt: "Registro da 2ª mentoria da Tebe sobre sensores IoT e GitHub",
     description:
       "Encontro com dois estagiários recém-contratados, instalação prática de sensores preventivos de falhas em equipamentos (ar-condicionado) e apresentação do GitHub com criação de repositórios em duplas.",
@@ -327,8 +315,7 @@ const experiencesData = [
     title: "3ª Mentoria Tebe — Versionamento Local com GitHub",
     category: "Tebe • Mentoria 03",
     year: "02/10/2025",
-    // TODO: Adicionar a foto exclusiva da 3ª mentoria da Tebe
-    cover: "",
+    cover: "visita8.png",
     coverAlt: "Registro da 3ª mentoria da Tebe sobre versionamento local no GitHub",
     description:
       "Continuidade do aprendizado sobre GitHub, aprendendo a manusear o repositório criado anteriormente e integrá-lo diretamente ao computador com orientação passo a passo de Matheus Nard e Marcos.",
@@ -345,8 +332,7 @@ const experiencesData = [
     title: "4ª Mentoria Tebe — Entrega Oficial & Avaliação do Projeto",
     category: "Tebe • Mentoria 04",
     year: "28/10/2025",
-    // TODO: Adicionar a foto exclusiva da 4ª mentoria da Tebe
-    cover: "",
+    cover: "visita7.png",
     coverAlt: "Registro da 4ª mentoria da Tebe na entrega oficial do projeto",
     description:
       "Entrega oficial do projeto desenvolvido pela equipe, esclarecimento de dúvidas técnicas e recebimento de orientações práticas da Tebe para identificação de melhorias, correção de erros e refinamento final.",
@@ -380,7 +366,7 @@ const certificatesData = [
     desc: "Concluído com sucesso o curso Fundamentos do Python 1, abordando sintaxe básica, tipos de dados, estruturas de controle, funções e lógica de programação em Python.",
     hours: "Cert ID: 15961357-d9a8-4b4d-a669-09061d4b97ab",
     date: "Concluído em 18 de novembro de 2026",
-    image: "",
+    image: "certificado-python1.png",
     fileUrl: "Python_Essentials_1_certificate_joaopadua7-gmail-com_15961357-d9a8-4b4d-a669-09061d4b97ab.pdf",
     fileLabel: "Ver certificado (PDF)"
   },
@@ -391,7 +377,7 @@ const certificatesData = [
     desc: "Concluído com sucesso o curso Fundamentos de Python 2, aprofundando em módulos, pacotes, programação orientada a objetos (POO), exceções e manipulação de arquivos.",
     hours: "Cert ID: 185f4bef-78ae-488a-9bd3-3c5c5e831a43",
     date: "Concluído em 18 de novembro de 2026",
-    image: "",
+    image: "certificado-python2.png",
     fileUrl: "Python_Essentials_2_certificate_joaopadua7-gmail-com_185f4bef-78ae-488a-9bd3-3c5c5e831a43.pdf",
     fileLabel: "Ver certificado (PDF)"
   }
@@ -419,7 +405,32 @@ function updateDynamicCounts() {
 }
 
 /* =========================================================
-   4. CURSOR PERSONALIZADO, MAGNETISMO (--tx/--ty) & HERO PARALLAX
+   4. PREENCHIMENTO DIRECIONAL DOS BOTÕES (DE ONDE O MOUSE ENCOSTA)
+========================================================= */
+function initDirectionalButtonFill() {
+  const selector = ".btn-pill, .filter-btn, .tcc-tab-btn, .icon-btn, .menu-toggle";
+
+  function setOriginFromMouse(e) {
+    const btn = e.target.closest(selector);
+    if (!btn) return;
+    const rect = btn.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const maxDist = Math.hypot(
+      Math.max(x, rect.width - x),
+      Math.max(y, rect.height - y)
+    );
+    btn.style.setProperty("--x", `${x.toFixed(1)}px`);
+    btn.style.setProperty("--y", `${y.toFixed(1)}px`);
+    btn.style.setProperty("--fill-size", `${Math.ceil(maxDist * 2.1)}px`);
+  }
+
+  document.addEventListener("pointerenter", setOriginFromMouse, true);
+  document.addEventListener("pointerleave", setOriginFromMouse, true);
+}
+
+/* =========================================================
+   5. CURSOR PERSONALIZADO, MAGNETISMO NA LOGO & HERO PARALLAX
 ========================================================= */
 (function initCursorAndHeroFX() {
   const isFinePointer = window.matchMedia("(pointer: fine)").matches;
@@ -501,21 +512,21 @@ function updateDynamicCounts() {
     });
 
     document.addEventListener("mouseover", (e) => {
-      if (e.target.closest("a, button, .portrait-stage, .cert-card, .tool-card, .tcc-card")) {
+      if (e.target.closest("a, button, .portrait-stage, .cert-card, .tool-card, .tcc-card, .tcc-shot-frame")) {
         document.body.classList.add("cursor-hover");
       }
     });
 
     document.addEventListener("mouseout", (e) => {
-      if (e.target.closest("a, button, .portrait-stage, .cert-card, .tool-card, .tcc-card")) {
+      if (e.target.closest("a, button, .portrait-stage, .cert-card, .tool-card, .tcc-card, .tcc-shot-frame")) {
         document.body.classList.remove("cursor-hover");
       }
     });
   }
 
-  // Efeito Magnético via --tx / --ty sem conflitar com o transform do :active
+  // Efeito Magnético aplicado apenas na marca (.brand.magnetic)
   if (!prefersReduced && isFinePointer) {
-    document.querySelectorAll(".magnetic").forEach((el) => {
+    document.querySelectorAll(".brand.magnetic").forEach((el) => {
       el.addEventListener("mousemove", (e) => {
         const rect = el.getBoundingClientRect();
         const dx = (e.clientX - (rect.left + rect.width / 2)) * 0.2;
@@ -558,7 +569,7 @@ function updateDynamicCounts() {
     heroVisObserver.observe(hero);
   }
 
-  // Tilt 3D na Foto + Parallax inverso nas faixas SCALLORA (desligado no mobile <= 640px)
+  // Tilt 3D na Foto + Parallax inverso nas faixas SCALLORA
   if (stage && !prefersReduced) {
     stage.addEventListener("mousemove", (e) => {
       if (window.innerWidth <= 640) return;
@@ -572,7 +583,6 @@ function updateDynamicCounts() {
 
       stage.style.transform = `perspective(900px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg)`;
 
-      // Deslocamento no sentido oposto ao tilt (14px)
       const bgTx = (0.5 - relX) * 28;
       const bgTy = (0.5 - relY) * 24;
       stage.style.setProperty("--tx", `${bgTx.toFixed(1)}px`);
@@ -593,7 +603,7 @@ function updateDynamicCounts() {
 })();
 
 /* =========================================================
-   5. MENU MOBILE ACESSÍVEL & DESTAQUE DE SEÇÃO ATIVA
+   6. MENU MOBILE ACESSÍVEL & DESTAQUE DE SEÇÃO ATIVA
 ========================================================= */
 (function initNavigation() {
   const siteHeader = document.getElementById("siteHeader");
@@ -649,7 +659,6 @@ function updateDynamicCounts() {
     });
   }
 
-  // IntersectionObserver para destacar seção ativa no menu
   const navLinks = document.querySelectorAll("[data-nav-link]");
   const observedSections = Array.from(navLinks)
     .map((link) => document.querySelector(link.getAttribute("href")))
@@ -675,7 +684,7 @@ function updateDynamicCounts() {
 })();
 
 /* =========================================================
-   6. ABAS WAI-ARIA DO PROJETO TCC (SCALLORA)
+   7. ABAS WAI-ARIA DO PROJETO TCC (SCALLORA)
 ========================================================= */
 (function initTccTabs() {
   const tabList = document.querySelector(".tcc-tabs-bar");
@@ -727,7 +736,7 @@ function updateDynamicCounts() {
 })();
 
 /* =========================================================
-   7. CERTIFICADOS (COM ALTURA UNIFORME + ABRIR PDF/IMAGEM)
+   8. CERTIFICADOS (COM IMAGENS OFICIAIS + ABRIR PDF/IMAGEM)
 ========================================================= */
 function renderCertificates() {
   const certificatesGrid = document.getElementById("certificatesGrid");
@@ -775,7 +784,7 @@ function renderCertificates() {
 }
 
 /* =========================================================
-   8. VIVÊNCIAS AGRUPADAS, PREVIEW SOB DEMANDA & MODAL COM FOCUS TRAP
+   9. VIVÊNCIAS AGRUPADAS, PREVIEW SOB DEMANDA & MODAL COM FOCUS TRAP
 ========================================================= */
 (function initExperiencesAndModal() {
   const container = document.getElementById("experiencesContainer");
@@ -1111,7 +1120,7 @@ function renderCertificates() {
 })();
 
 /* =========================================================
-   9. COPIAR E-MAIL & SCROLL REVEAL
+   10. COPIAR E-MAIL & SCROLL REVEAL
 ========================================================= */
 const copyEmailBtn = document.getElementById("copyEmailBtn");
 if (copyEmailBtn) {
@@ -1127,6 +1136,7 @@ if (copyEmailBtn) {
   });
 }
 
+initDirectionalButtonFill();
 updateDynamicCounts();
 renderCertificates();
 
