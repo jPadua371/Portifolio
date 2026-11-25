@@ -12,7 +12,7 @@ const experiencesData = [
     cover: "visita.png",
     coverAlt: "Apresentação institucional da DevCoffee e seus fundadores",
     description:
-      "Sediada em Leme (SP), às margens da Rodovia Anhanguera, a DevCoffee atua desde 2006 no desenvolvimento de sistemas de gestão empresarial, destacando-se pela plataforma online BrERP. Fundada por Bruno Luis Ferreira e Murilo Habermann Torquato, firmou parceria com o Centro Paula Souza (CPS) e a Fatec para aproximar os estudantes do mercado de tecnologia.",
+      "Sediada em Leme (SP), às margens da Rodovia Anhanguera, a DevCoffee atua desde 2006 no desenvolvimento de sistemas de gestão empresarial, destacando-se pela plataforma online BrERP. Fundada por Bruno Luis Ferreira e Murilo Habermann Torquato, firmou parceria com o Centro Paula Souza (CPS) e a Etec para aproximar os estudantes do mercado de tecnologia.",
     bullets: [
       "Fundadores: Bruno Luis Ferreira e Murilo Habermann Torquato",
       "Produto principal: BrERP (Gestão Empresarial Integrada)",
@@ -1127,7 +1127,7 @@ if (copyEmailBtn) {
   const labelSpan = copyEmailBtn.querySelector(".btn-text");
   copyEmailBtn.addEventListener("click", async () => {
     try {
-      await navigator.clipboard.writeText("joaopedro.padua@fatec.sp.gov.br");
+      await navigator.clipboard.writeText("joaopedro.padua@aluno.cps.sp.gov.br");
     } catch {}
     if (labelSpan) labelSpan.textContent = "Copiado!";
     setTimeout(() => {
