@@ -260,10 +260,10 @@ const experiencesData = [
   {
     filter: "iochpe",
     companyLabel: "Fundação Iochpe",
-    yearGroup: "2025",
+    yearGroup: "2026",
     title: "2ª Mentoria Fundação Iochpe — Resolução de Conflitos & Soft Skills",
     category: "Fundação Iochpe • Mentoria 02",
-    year: "04/09/2025",
+    year: "04/09/2026",
     cover: "visita16.png",
     coverAlt: "Dinâmica em grupo sobre resolução de conflitos e habilidades emocionais",
     description:
@@ -277,10 +277,10 @@ const experiencesData = [
   {
     filter: "tebe",
     companyLabel: "Tebe",
-    yearGroup: "2025",
+    yearGroup: "2026",
     title: "1ª Mentoria Tebe — Alinhamento & Liderança",
     category: "Tebe • Mentoria 01",
-    year: "04/09/2025",
+    year: "04/09/2026",
     cover: "visita7.png",
     coverAlt: "Equipe da Tebe apresentando o desafio do projeto para a turma",
     description:
@@ -294,10 +294,10 @@ const experiencesData = [
   {
     filter: "tebe",
     companyLabel: "Tebe",
-    yearGroup: "2025",
+    yearGroup: "2026",
     title: "2ª Mentoria Tebe — Sensores IoT & Introdução ao GitHub",
     category: "Tebe • Mentoria 02",
-    year: "18/09/2025",
+    year: "18/09/2026",
     cover: "visita20.png",
     coverAlt: "Registro da 2ª mentoria da Tebe sobre sensores IoT e GitHub",
     description:
@@ -311,10 +311,10 @@ const experiencesData = [
   {
     filter: "tebe",
     companyLabel: "Tebe",
-    yearGroup: "2025",
+    yearGroup: "2026",
     title: "3ª Mentoria Tebe — Versionamento Local com GitHub",
     category: "Tebe • Mentoria 03",
-    year: "02/10/2025",
+    year: "02/10/2026",
     cover: "visita8.png",
     coverAlt: "Registro da 3ª mentoria da Tebe sobre versionamento local no GitHub",
     description:
@@ -328,10 +328,10 @@ const experiencesData = [
   {
     filter: "tebe",
     companyLabel: "Tebe",
-    yearGroup: "2025",
+    yearGroup: "2026",
     title: "4ª Mentoria Tebe — Entrega Oficial & Avaliação do Projeto",
     category: "Tebe • Mentoria 04",
-    year: "28/10/2025",
+    year: "28/10/2026",
     cover: "visita7.png",
     coverAlt: "Registro da 4ª mentoria da Tebe na entrega oficial do projeto",
     description:
